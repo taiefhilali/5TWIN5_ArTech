@@ -29,7 +29,6 @@ import { ViewQuizzesComponent } from './Quiz/view-quizzes/view-quizzes.component
 import { UpdateCategoryComponent } from './Quiz/update-category/update-category.component';
 import { DeleteCategoryComponent } from './Quiz/delete-category/delete-category.component';
 
-
 const appRoutes: Routes = [
   {
     path: 'pages',
@@ -41,6 +40,7 @@ const appRoutes: Routes = [
     pathMatch: 'full'
   },
 
+  
   {
     path: '**',
     redirectTo: '/pages/miscellaneous/error' //Error 404 - Page not found
@@ -48,10 +48,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-
   declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent],
-
-  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -82,10 +79,5 @@ const appRoutes: Routes = [
 
   bootstrap: [AppComponent],
   providers: [CategoryService,QuizService],
-
-    SampleModule
-  ],
-
-  bootstrap: [AppComponent]
 })
 export class AppModule {}

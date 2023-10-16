@@ -24,7 +24,7 @@ import { BlogModule } from './blog/blog.module';
     FormsModule,
     AuthenticationModule,
     MiscellaneousModule,
-    BlogModule
+    BlogModule,
     MiscellaneousModule
   ],
 
