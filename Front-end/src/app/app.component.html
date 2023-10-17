@@ -1,28 +1,32 @@
-<!-- vertical-layout -->
-<ng-container *ngIf="coreConfig.layout.type === 'vertical'">
-  <vertical-layout></vertical-layout>
-</ng-container>
-<!-- / vertical-layout -->
+<!-- Header avec Bootstrap Navbar -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">IntelliPath</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/cours">Liste des Cours</a>
+        </li>
 
-<!-- horizontal-layout -->
-<ng-container *ngIf="coreConfig.layout.type === 'horizontal'">
-  <horizontal-layout></horizontal-layout>
-</ng-container>
-<!-- / horizontal-layout -->
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/formation">Liste des Formations</a>
+        </li>
+       
+      </ul>
+    </div>
+   
+    
+    
+  </nav>
+</header>
 
-<!-- theme customizer -->
-<core-sidebar
-  name="themeCustomizer"
-  class="customizer d-none d-md-block"
-  [invisibleOverlay]="true"
-  *ngIf="coreConfig.layout.customizer"
->
-  <a
-    class="customizer-toggle d-flex align-items-center justify-content-center"
-    (click)="toggleSidebar('themeCustomizer')"
-  >
-    <span [data-feather]="'settings'" [class]="'spinner'"></span>
-  </a>
-  <core-theme-customizer></core-theme-customizer>
-</core-sidebar>
-<!-- / theme customizer -->
+<!-- Contenu principal -->
+<router-outlet></router-outlet>
+
+<!-- Footer basique -->
+<footer class="bg-dark text-white mt-4 p-3 text-center">
+  © 2023 Tous droits réservés. IntelliPath
+</footer>

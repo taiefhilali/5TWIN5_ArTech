@@ -1,32 +1,28 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ViewCategoriesComponent } from './Quiz/view-categories/view-categories.component';
-import { AddCategoryComponent } from './Quiz/add-category/add-category.component';
-import { ViewQuizzesComponent } from './Quiz/view-quizzes/view-quizzes.component';
-import { UpdateCategoryComponent } from './Quiz/update-category/update-category.component';
-
+import { CoursListComponent } from './pages/cours-list/cours-list.component';
+import { CoursAddComponent } from './pages/cours-add/cours-add.component';
+import { CoursEditComponent } from './pages/cours-edit/cours-edit.component';
+import { FormationListComponent } from './pages/formation-list/formation-list.component';
+import { FormationAddComponent } from './pages/formation-add/formation-add.component';
+import { FormationEditComponent } from './pages/formation-edit/formation-edit.component';
 
 const routes: Routes = [
-  // Other routes
-  { path: 'categories', component: ViewCategoriesComponent },
-  { path: 'add-category', component: AddCategoryComponent },
-  { path: 'quizzes', component: ViewQuizzesComponent },
-  { path: 'updatecat/:id', component:UpdateCategoryComponent },
+  { path: '', redirectTo: '/cours', pathMatch: 'full' },  // Redirige par défaut vers la liste des cours
+  { path: 'cours', component: CoursListComponent },
+  { path: 'cours/add', component: CoursAddComponent },
+  { path: 'cours/edit', component: CoursEditComponent },
+  { path: 'formation', component: FormationListComponent },
+  { path: 'formation/add', component: FormationAddComponent },
+  { path: 'formation/edit', component: FormationEditComponent },
+
 
 
 
 ];
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    RouterModule.forRoot(routes)
-    
-  ],
-  exports:[
-    RouterModule,
-  ],
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

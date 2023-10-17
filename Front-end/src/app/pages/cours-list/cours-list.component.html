@@ -1,0 +1,48 @@
+<h1>Liste des cours</h1>
+
+<!-- Vérification si la liste des cours est disponible -->
+<div *ngIf="cours && cours.length">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <!-- Ajoutez d'autres en-têtes de table en fonction des propriétés de votre modèle Cours -->
+        <th>Titre</th>
+        <!-- Exemple si vous avez d'autres champs comme description, date, etc. -->
+        <th>Description</th>
+        <th>dateDebut</th>
+        <th>dateFin</th>
+        <th>lieu</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Itération sur chaque cours et affichage de ses propriétés -->
+      <tr *ngFor="let c of cours">
+        <td>{{ c.id }}</td>
+        <!-- Ajoutez d'autres cellules de table pour afficher les propriétés de chaque cours -->
+        <td>{{ c.titre }}</td>
+        <!-- Exemple si vous avez d'autres champs -->
+        <td>{{ c.description }}</td>
+        <td>{{ c.dateDebut }}</td>
+        <td>{{ c.dateFin }}</td>
+        <td>{{ c.lieu }}</td>
+
+        <td>
+          <a routerLink="/cours/edit" class="btn btn-secondary">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Message si aucun cours n'est disponible -->
+<div *ngIf="cours && !cours.length">
+  Aucun cours disponible pour le moment.
+</div>
+
+
+<button class="btn btn-primary" routerLink="/cours/add">Ajouter Cours</button>
+
+
+

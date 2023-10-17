@@ -1,0 +1,31 @@
+<form (ngSubmit)="onSubmit()">
+    <!-- Supposons que le cours ait un champ nom -->
+
+
+    <div class="form-group">
+        <label for="name">Description de la formation</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="formation.description" name="description">
+    </div>
+
+    <div class="form-group">
+        <label for="dateDebut">Date de debut</label>
+        <input type="date" class="form-control" id="dateDebut" [(ngModel)]="formation.dateDebut" name="dateDebut">
+    </div>
+
+    <div class="form-group">
+        <label for="dateFin">Date de Fin</label>
+        <input type="date" class="form-control" id="dateFin" [(ngModel)]="formation.dateFin" name="dateFin">
+    </div>
+
+    <div class="form-group">
+        <label for="lieu">Lieu</label>
+        <input type="text" class="form-control" id="lieu" [(ngModel)]="formation.lieu" name="lieu">
+    </div>
+
+    
+  
+    <!-- Ajoutez d'autres champs en fonction des propriétés de votre modèle Cours -->
+  
+    <button type="submit" class="btn btn-primary">Ajouter la formation</button>
+</form>
+  
