@@ -1,0 +1,166 @@
+// /* CSS styles for the quiz icon */
+// .quiz-icon {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     font-size: 24px;
+//   }
+//   .bigger-icon {
+//     font-size: 49px; /* You can adjust the size as needed */
+//   }
+//   /* CSS styles for the card */
+//   .quiz-card {
+//     border: 1px solid #7f788290;
+//     border-radius: 10px;
+//     padding: 10px;
+//     margin: 10px;
+//     position: relative;
+//     min-height: 150px; /* Adjust the height as needed */
+//   }
+  
+//   /* CSS styles for the Max Marks and Number of Questions buttons */
+//   .card-buttons {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+  
+//   .max-marks-button,
+//   .num-questions-button {
+//     background-color: #a49ca6; /* Primary color */
+//     color: #fff;
+//     border: none;
+//     border-radius: 5px;
+//     padding: 5px 10px;
+//     cursor: pointer;
+//     font-weight: bold;
+//     transition: background-color 0.3s;
+//   }
+//   .max-marks-button {
+//     display: flex;
+//     align-items: center;
+//   }
+  
+//   .max-marks-button i {
+//     margin-right: 5px; /* Adjust the amount of padding to your preference */
+//   }
+  
+// .max-marks-button:hover,
+//   .max-marks-button:hover {
+//     background-color: #7367f0; /* Darker shade of the primary color on hover */
+//   }
+
+//   /* CSS styles for moving h3 and p elements to the right */
+// .quiz-title {
+//     margin-left: 100px;
+//     margin-top: 10px; /* Adjust the value as needed */
+//   }
+  
+//   .quiz-description {
+//     margin-left: 100px;
+//     margin-top: 10px;  /* Adjust the value as needed */
+//   }
+  
+//   .quiz-category {
+//     margin-right: 100px; /* Adjust the value as needed */
+//   }
+  
+//   /* Styles for the delete button */
+// /* Styles for the delete icon button */
+// /* Styles for the smaller delete icon button */
+// .delete-icon-button {
+//   background: none;
+//   border: none;
+//   color: #7367f0; /* Replace with your primary color */
+//   font-size: 16px; /* Adjust the font size to make it smaller */
+//   cursor: pointer;
+//   padding: 0;
+//   margin: 0 3px; /* Add margin for spacing */
+// }
+
+// .delete-icon-button:hover {
+//   color: #7367f0; /* Change color on hover */
+// }
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -50vh; /* This centers the container vertically */
+}
+.quiz-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+
+.quiz-card {
+  width: 150px; /* Adjust the size of the square card */
+  background-color: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.quiz-card:hover {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.quiz-icon {
+  font-size: 30px;
+}
+
+.quiz-title {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.quiz-description {
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+.max-marks-button,
+.num-questions-button {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.quiz-category {
+  font-size: 12px;
+}
+.icon-text {
+  margin-left: 8px; /* Adjust the margin as needed */
+}
+
+.card-buttons {
+  display: none;
+  background: none;
+  border: none;
+  color: #7367f0; 
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 3px; 
+}
+.quiz-card:hover .card-buttons {
+  display: block;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+}
+
+a.btn-icon {
+  padding: 0 10px;
+}
+
