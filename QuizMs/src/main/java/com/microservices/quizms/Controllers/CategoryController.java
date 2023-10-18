@@ -20,6 +20,7 @@ public class CategoryController {
     Category category1=this.categoryService.addCategory(category);
     return ResponseEntity.ok(category1);
     }
+    
 
     //get category
     @GetMapping("/{categoryId}")

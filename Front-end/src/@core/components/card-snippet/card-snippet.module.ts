@@ -9,7 +9,7 @@ import { CoreCardSnippetComponent } from '@core/components/card-snippet/card-sni
 
 @NgModule({
   declarations: [CoreCardSnippetComponent],
-  imports: [CommonModule, NgbModule, HighlightModule, CoreCommonModule],
+  imports: [CommonModule, NgbModule, CoreCommonModule],
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,

@@ -1,0 +1,212 @@
+<div class="blog-wrapper">
+    <div class="content-wrapper container-xxl p-0">
+      <!-- content-header component -->
+  
+      <div class="content-detached content-left">
+        <div class="content-body">
+          <!-- Blog Detail -->
+          <div class="blog-detail-wrapper">
+            <div class="row">
+              <!-- Blog -->
+              <div class="col-12">
+                <div class="card">
+                    <a routerLink="/pages/blog-details/">
+                        <img class="card-img-top rounded" height=350px alt="Recent Post Pic" [src]="'../assets/images/pages/content-img-3.jpg'" />
+                      </a>      
+                                  <div class="card-body">
+                                    <h4 class="card-title">{{ post.postTitle }}</h4>
+                                    <div class="media">
+                      <div class="avatar mr-50">
+                        <img src="assets/images/portrait/small/avatar-s-6.jpg"  alt="Avatar" width="24" height="24" />
+                      </div>
+                      <div class="media-body">
+                        <small class="text-muted mr-25">by</small>
+                        <small
+                          ><a href="javascript:void(0);" class="text-body">siwar enfaiedh</a></small
+                        >
+                        <span class="text-muted ml-50 mr-25">|</span>
+                        <small class="text-muted">{{ post[0]?.dateCreated| date: 'mediumDate'  }}</small>
+                      </div>
+                    </div>
+                    <div class="my-1 py-25">
+                      <!-- <a href="javascript:void(0);" >
+                        <div
+                          class="badge badge-pill mr-50"
+                          [ngClass]="{
+                            'bg-light-info': "tagsRef" === 'Quote',
+                            'bg-light-primary': tagsRef === 'Fashion',
+                            'bg-light-danger': tagsRef === 'Gaming',
+                            'bg-light-warning': tagsRef === 'Video',
+                            'bg-light-success': tagsRef === 'Food'
+                          }"
+                        >
+                          {{ tagsRef }}
+                        </div>
+                      </a> -->
+                      <div class="my-1 py-25">
+                        <div
+                          class="badge badge-pill mr-50"
+                          [ngClass]="{
+                            'bg-light-info': post.category === 'ANGULAR',
+                            'bg-light-primary': post.category === 'SPRINGBOOT',
+                            'bg-light-danger': post.category === 'REACT',
+                            'bg-light-warning': post.category === 'LARAVEL'
+                          }"
+                        >
+                          {{ post.category }}
+                        </div>
+                      </div>
+                    </div>
+                    <p class="card-text mb-2" >{{ post.postDescription }}</p>
+
+                    <p class="card-text mb-2" ></p>
+                    <!-- <div class="media">
+                      <div class="avatar mr-2">
+                        <img src="assets/images/portrait/small/avatar-s-6.jpg" width="60" height="60" alt="Avatar" />
+                      </div>
+                      
+                    </div> -->
+                    <hr class="my-2" />
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center mr-1">
+                          <a href="javascript:void(0);" class="mr-50">
+                            <i data-feather="message-square" class="font-medium-5 text-body align-middle"></i>
+                          </a>
+                          <a href="javascript:void(0);">
+                            <div class="text-body align-middle">{{ comments.length }}</div>
+                          </a>
+                        </div>
+                        
+                        <!-- <div class="d-flex align-items-center">
+                          <a href="javascript:void(0);" class="mr-50">
+                            <i data-feather="bookmark" class="font-medium-5 text-body align-middle"></i>
+                          </a>
+                          <a href="javascript:void(0);">
+                            <div class="text-body align-middle">137</div>
+                          </a>
+                        </div> -->
+                      </div>
+                      <div ngbDropdown class="blog-detail-share">
+                        <a type="button" ngbDropdownToggle>
+                          <i
+                            data-feather="share-2"
+                            class="font-medium-5 text-body cursor-pointer"
+                            role="button"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          ></i>
+                        </a>
+                        <div ngbDropdownMenu class="dropdown-menu-right">
+                          <a href="javascript:void(0);" ngbDropdownItem class="py-50 px-1">
+                            <i data-feather="github" class="font-medium-3"></i>
+                          </a>
+                          <a href="javascript:void(0);" ngbDropdownItem class="py-50 px-1">
+                            <i data-feather="gitlab" class="font-medium-3"></i>
+                          </a>
+                          <a href="javascript:void(0);" ngbDropdownItem class="py-50 px-1">
+                            <i data-feather="facebook" class="font-medium-3"></i>
+                          </a>
+                          <a href="javascript:void(0);" ngbDropdownItem class="py-50 px-1">
+                            <i data-feather="twitter" class="font-medium-3"></i>
+                          </a>
+                          <a href="javascript:void(0);" ngbDropdownItem class="py-50 px-1">
+                            <i data-feather="linkedin" class="font-medium-3"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--/ Blog -->
+  
+                             <!--/ comment -->
+
+                             <app-create-comment></app-create-comment>
+ </div></div>
+ </div>
+          </div>
+          <!--/ Blog Detail -->
+      <div class="sidebar-detached sidebar-right">
+        <div class="sidebar">
+          <div class="blog-sidebar my-2 my-lg-0">
+            <!-- Search bar -->
+            <div class="blog-search">
+              <div class="input-group input-group-merge">
+                <input type="text" class="form-control" placeholder="Search here" />
+                <div class="input-group-append">
+                  <span class="input-group-text cursor-pointer">
+                    <i data-feather="search"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <!--/ Search bar -->
+  
+            <!-- Recent Posts -->
+            <div class="blog-recent-posts mt-3">
+              <h6 class="section-label">Recent Posts</h6>
+              <div class="mt-75">
+                <div class="media mb-2">
+                    <a routerLink="/pages/blog-details/">
+                        <img  class="card-img-top rounded" alt="Recent Post Pic" [src]="'../assets/images/pages/content-img-3.jpg'" />
+                      </a>
+                  <div class="media-body">
+                    <h6 class="blog-recent-post-title">
+                      <!-- <a routerLink="/pages/blog-details/{{ recentPostsRef.id }}" class="text-body-heading">{{
+                        recentPostsRef.title
+                      }}</a> -->
+                    </h6>
+                    <!-- <div class="text-muted mb-0">22/21/2023</div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ Recent Posts -->
+  
+            <!-- Categories -->
+            <div class="blog-categories mt-3">
+              <h6 class="section-label">Categories</h6>
+              <!-- div class="mt-1" > -->
+                <!-- <div class="d-flex justify-content-start align-items-center mb-75">
+                  <a href="javascript:void(0);" class="mr-75">
+                   <div
+                      class="avatar bg-light-primary rounded"
+                      class="avatar bg-light-primary rounded"
+                      [ngClass]="{
+                        'bg-light-primary': categoriesRef.icon === 'watch',
+                        'bg-light-success': categoriesRef.icon === 'shopping-cart',
+                        'bg-light-danger': categoriesRef.icon === 'command',
+                        'bg-light-info': categoriesRef.icon === 'hash',
+                        'bg-light-warning': categoriesRef.icon === 'video'
+                      }"
+                    > 
+                      <div class="avatar-content">
+                        <i [data-feather]="categoriesRef.icon" class="avatar-icon font-medium-1"></i>
+                      </div>
+                    </div> 
+                  </a>-->
+                  <a href="javascript:void(0);" >
+                    <div *ngFor="let category of categories" class="mr-10">
+                      <a href="javascript:void(0);" class="mr-10">
+                        <div
+                          class="badge badge-pill mr-50"
+                          [ngClass]="{
+                            'bg-light-info': category === 'ANGULAR',
+                            'bg-light-primary': category === 'SPRINGBOOT',
+                            'bg-light-danger': category === 'REACT',
+                            'bg-light-warning': category === 'LARAVEL'
+                          }"
+                        >
+                          {{ category }}
+                        </div>
+                      </a>
+                    </div>
+                              </a>
+                </div>
+              </div>
+           
+     
+   
+  

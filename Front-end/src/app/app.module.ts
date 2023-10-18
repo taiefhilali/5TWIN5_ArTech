@@ -28,6 +28,13 @@ import { AddCategoryComponent } from './Quiz/add-category/add-category.component
 import { ViewQuizzesComponent } from './Quiz/view-quizzes/view-quizzes.component';
 import { UpdateCategoryComponent } from './Quiz/update-category/update-category.component';
 import { DeleteCategoryComponent } from './Quiz/delete-category/delete-category.component';
+import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-posts.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { QuillEditorComponent, QuillModule } from 'ngx-quill';
+import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.component';
+import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
+import { CreateCommentComponent } from './Posts/create-comment/create-comment/create-comment.component';
+import { ViewCommentComponent } from './Posts/view-comment/view-comment/view-comment.component';
 
 const appRoutes: Routes = [
   {
@@ -48,8 +55,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent],
   imports: [
+    NgSelectModule, // Import NgSelectModule here
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
