@@ -8,18 +8,33 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CoreCommonModule } from '@core/common.module';
 
 import { AuthLoginV2Component } from 'app/main/pages/authentication/auth-login-v2/auth-login-v2.component';
+import { AuthRegisterV2Component } from './auth-register-v2/auth-register-v2.component';
+import { AuthGuard } from 'app/auth/helpers/auth.guards';
+import { ActivateAccountComponent } from './activate-account/activate-account.component';
 
 // routing
 const routes: Routes = [
   {
     path: 'authentication/login-v2',
     component: AuthLoginV2Component,
-    data: { animation: 'auth' }
-  }
+    data: { animation: 'auth' },
+  },
+  {
+    path: 'authentication/register-v2',
+    component: AuthRegisterV2Component,
+    // canActivate: [AuthGuard], data: { roles: ['USER'] }
+
+  },
+  {
+    path: 'activateAccount',
+    component: ActivateAccountComponent,
+    // canActivate: [AuthGuard], data: { roles: ['USER'] }
+
+  },
 ];
 
 @NgModule({
-  declarations: [AuthLoginV2Component],
+  declarations: [AuthLoginV2Component,AuthRegisterV2Component, ActivateAccountComponent],
   imports: [CommonModule, RouterModule.forChild(routes), NgbModule, FormsModule, ReactiveFormsModule, CoreCommonModule]
 })
 export class AuthenticationModule {}

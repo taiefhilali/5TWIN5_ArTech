@@ -40,8 +40,8 @@ export class AuthenticationService {
   /**
    *  Confirms if user is client
    */
-  get isClient() {
-    return this.currentUser && this.currentUserSubject.value.role === Role.Client;
+  get isTeacher() {
+    return this.currentUser && this.currentUserSubject.value.role === Role.Teacher;
   }
 
   /**
@@ -51,36 +51,63 @@ export class AuthenticationService {
    * @param password
    * @returns user
    */
-  login(email: string, password: string) {
-    return this._http
-      .post<any>(`${environment.apiUrl}/users/authenticate`, { email, password })
-      .pipe(
-        map(user => {
-          // login successful if there's a jwt token in the response
-          if (user && user.token) {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify(user));
 
-            // Display welcome toast!
+  signup(userObj:any){
+    return this._http.post<any>(`${environment.apiUrl}/user/register` , userObj)
+  }
+
+  deleteAccount(userId:any,username:any){
+    return this._http.delete<any>(`${environment.apiUrl}/user/delete/${username}/${userId}` )
+  }
+  
+  login(userObj: String) {
+    return this._http
+      .post<any>(`${environment.apiUrl}/user/login`, userObj)
+      .pipe(
+        map(response => {
+          // Check if the response contains a JWT token
+          if (response && response.access_token) {
+            // Store user details and JWT token in local storage
+            const user = {
+              username: response.user.username,
+              email:response.user.email,
+              firstName: response.user.firstName,
+              lastName: response.user.lastName,
+              role: response.user.role,
+              id: response.user.id,
+              github: response.user?.github || '',
+              facebook: response.user?.facebook || '',
+              twitter: response.user?.twitter || '',
+              instagram: response.user?.instagram || '',
+              description: response.user?.description || '',
+              address: response.user?.address|| '',
+              phone: response.users?.phone || '',
+            };
+  
+            localStorage.setItem('access_token', response.access_token);
+            localStorage.setItem('currentUser', JSON.stringify(user));
+  
+            // Display welcome toast
             setTimeout(() => {
               this._toastrService.success(
                 'You have successfully logged in as an ' +
-                  user.role +
-                  ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
+                user.role +
+                ' user to Vuexy. Now you can start to explore. Enjoy! 🎉',
                 '👋 Welcome, ' + user.firstName + '!',
                 { toastClass: 'toast ngx-toastr', closeButton: true }
               );
             }, 2500);
-
-            // notify
+  
+            // Notify subscribers with the user details
             this.currentUserSubject.next(user);
           }
-
-          return user;
+  
+          return response;
         })
       );
   }
-
+  
+  
   /**
    * User logout
    *
@@ -88,7 +115,55 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    localStorage.removeItem('access_token');
+
     // notify
     this.currentUserSubject.next(null);
   }
+
+  edit(userObj:any,id:any){
+    return this._http.put<any>(`${environment.apiUrl}/user/update/${id}` , userObj)
+    .pipe(
+      map((res) => {
+        // Update the currentUser object with the new data
+        const updatedUser = {
+          username: res.username,
+          firstName: res.firstName,
+          lastName: res.lastName,
+          email:res.email,
+          role: res.role,
+          userName: res.userName,
+          id: res.id,
+          github: res.github,
+          facebook: res.facebook,
+          twitter: res.twitter,
+          instagram: res.instagram,
+          description: res.description,
+          address: res.address,
+          phone: res.phone
+        };
+  
+        // Store user details and JWT token in local storage
+        localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+  
+        // Notify subscribers with the updated user details
+        this.currentUserSubject.next(updatedUser);
+  
+        return res; // You can return the response if needed
+      })
+    
+    )
+
 }
+
+enableUser(username:any){
+  return this._http.put<any>(`${environment.apiUrl}/user/enableUser` , username)
+}
+
+
+getAllusers(){
+  return this._http.get<any>(`${environment.apiUrl}/user/all`)
+}
+
+  }
+

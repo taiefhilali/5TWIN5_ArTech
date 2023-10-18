@@ -10,9 +10,11 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
-
+import { ProfileModule } from './profile/profile.module';
+import { UsersModule } from './users/users.module';
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     CoreCommonModule,
@@ -21,7 +23,9 @@ import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
     NgSelectModule,
     FormsModule,
     AuthenticationModule,
-    MiscellaneousModule
+    MiscellaneousModule,
+    ProfileModule,
+    UsersModule
   ],
 
   providers: []

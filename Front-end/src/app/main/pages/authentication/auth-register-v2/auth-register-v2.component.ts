@@ -1,27 +1,25 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+
 import { CoreConfigService } from '@core/services/config.service';
 import { AuthenticationService } from 'app/auth/service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth-login-v2',
-  templateUrl: './auth-login-v2.component.html',
-  styleUrls: ['./auth-login-v2.component.scss'],
+  selector: 'app-auth-register-v2',
+  templateUrl: './auth-register-v2.component.html',
+  styleUrls: ['./auth-register-v2.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AuthLoginV2Component implements OnInit {
-  //  Public
+export class AuthRegisterV2Component implements OnInit {
+  // Public
   public coreConfig: any;
-  public loginForm: UntypedFormGroup;
-  public loading = false;
-  public submitted = false;
-  public returnUrl: string;
-  public error = '';
   public passwordTextType: boolean;
+  public registerForm: UntypedFormGroup;
+  public submitted = false;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -30,14 +28,14 @@ export class AuthLoginV2Component implements OnInit {
    * Constructor
    *
    * @param {CoreConfigService} _coreConfigService
+   * @param {FormBuilder} _formBuilder
    */
   constructor(
-    private authService:AuthenticationService,
     private _coreConfigService: CoreConfigService,
-    private _formBuilder: UntypedFormBuilder,
-    private _route: ActivatedRoute,
-    private _router: Router
-  ) {
+     private _formBuilder: UntypedFormBuilder,
+     private authService:AuthenticationService,
+     private _router: Router
+     ) {
     this._unsubscribeAll = new Subject();
 
     // Configure the layout
@@ -60,7 +58,7 @@ export class AuthLoginV2Component implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() {
-    return this.loginForm.controls;
+    return this.registerForm.controls;
   }
 
   /**
@@ -70,20 +68,25 @@ export class AuthLoginV2Component implements OnInit {
     this.passwordTextType = !this.passwordTextType;
   }
 
+  /**
+   * On Submit
+   */
   onSubmit() {
+
+      // stop here if form is invalid
+      if (this.registerForm.invalid) {
+        return;
+      }
+
     this.submitted = true;
+    const userObj = this.registerForm.value;
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    const userObj = this.loginForm.value;
-    this.authService.login(userObj).subscribe({
+    console.log("User Data:", userObj);
+    this.authService.signup(userObj).subscribe({
       next:(res)=>{
-        alert("Login Successful");
-        this.loginForm.reset();
-        this._router.navigate(['/home']);
+        alert("User registed successfully");
+        this.registerForm.reset();
+        this._router.navigate(['/']);
 
       },error:(error)=>{
         alert(error.message)
@@ -94,20 +97,17 @@ export class AuthLoginV2Component implements OnInit {
 
   }
 
-  // Lifecycle Hooks
-  // -----------------------------------------------------------------------------------------------------
 
-  /**
-   * On init
-   */
+
   ngOnInit(): void {
-    this.loginForm = this._formBuilder.group({
+    this.registerForm = this._formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      role: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
       username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
 
     // Subscribe to config changes
     this._coreConfigService.config.pipe(takeUntil(this._unsubscribeAll)).subscribe(config => {

@@ -24,7 +24,7 @@ import { User, Role } from 'app/auth/models';
 const users: User[] = [
   {
     id: 1,
-    email: 'admin@demo.com',
+    username: 'admin@demo.com',
     password: 'admin',
     firstName: 'John',
     lastName: 'Doe',
@@ -33,16 +33,16 @@ const users: User[] = [
   },
   {
     id: 2,
-    email: 'client@demo.com',
+    username: 'client@demo.com',
     password: 'client',
     firstName: 'Nataly',
     lastName: 'Doe',
     avatar: 'avatar-s-2.jpg',
-    role: Role.Client
+    role: Role.Teacher
   },
   {
     id: 3,
-    email: 'user@demo.com',
+    username: 'user@demo.com',
     password: 'user',
     firstName: 'Rose',
     lastName: 'Doe',
@@ -79,12 +79,12 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // route functions
 
     function authenticate() {
-      const { email, password } = body;
-      const user = users.find(x => x.email === email && x.password === password);
+      const { userName, password } = body;
+      const user = users.find(x => x.username === userName && x.password === password);
       if (!user) return error('Username or password is incorrect');
       return ok({
         id: user.id,
-        email: user.email,
+        userName: user.username,
         firstName: user.firstName,
         lastName: user.lastName,
         avatar: user.avatar,
