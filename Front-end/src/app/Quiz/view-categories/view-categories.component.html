@@ -4,28 +4,25 @@
   <div class="row font-weight-bold">
     All categories
   </div>
-  <button class="btn btn-primary">
-    <a routerLink="/add-category" style="color: white; text-decoration: none;">Add Category</a>
-  </button>
-<ul></ul>
+
+  <ul></ul>
   <ul class="list-unstyled">
     <li *ngFor="let category of categories" class="category-card">
-      <div class="card border-primary mb-3">
+      <div class="card border-primary mb-3 card-sm"> <!-- Make the cards smaller -->
         <div class="card-header">
           <i class="fas fa-question-circle"></i> <!-- Quiz icon -->
+          <a [routerLink]="'/updatecat/' + category.cid" class="edit-icon">
+            <i class="fa fa-edit"></i>
+          </a>
+          <a (click)="deleteCategory(category.cid)" class="delete-icon">
+            <i class="fa fa-trash"></i>
+          </a>
         </div>
         <div class="card-body">
           <h5 class="card-title">{{ category.title }}</h5>
           <p class="card-text">{{ category.description }}</p>
-          
-          <button class="btn btn-primary" (click)="openUpdateForm(category)">Edit Category</button>
-
-          <!-- <i class="fas fa-trash-alt delete-icon" (click)="deleteCategory(category)"></i> -->
-          
         </div>
       </div>
     </li>
   </ul>
-
-
 </div>

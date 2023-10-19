@@ -12,7 +12,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { BlogModule } from './blog/blog.module';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -24,8 +23,7 @@ import { BlogModule } from './blog/blog.module';
     FormsModule,
     AuthenticationModule,
     MiscellaneousModule,
-    BlogModule,
-    MiscellaneousModule
+    BlogModule
   ],
 
   providers: []

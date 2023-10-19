@@ -28,6 +28,11 @@ import { AddCategoryComponent } from './Quiz/add-category/add-category.component
 import { ViewQuizzesComponent } from './Quiz/view-quizzes/view-quizzes.component';
 import { UpdateCategoryComponent } from './Quiz/update-category/update-category.component';
 import { DeleteCategoryComponent } from './Quiz/delete-category/delete-category.component';
+import { AddQuizzesComponent } from './Quiz/add-quizzes/add-quizzes.component';
+import { UpdateQuizzesComponent } from './Quiz/update-quizzes/update-quizzes.component';
+import { ViewQuestionsComponent } from './Quiz/view-questions/view-questions.component';
+import { ViewQuizQuestionsComponent } from './Quiz/view-quiz-questions/view-quiz-questions.component';
+import { AddQuestionComponent } from './Quiz/add-question/add-question.component';
 
 const appRoutes: Routes = [
   {
@@ -48,7 +53,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -1,26 +1,24 @@
 <div class="form-container">
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Update Category</h2>
-        <form (submit)="updateCategory()" [formGroup]="categoryForm">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" formControlName="title">
-            <div *ngIf="categoryForm.get('title').hasError('required')">Title is required.</div>
-            <div *ngIf="categoryForm.get('title').hasError('maxlength')">Title cannot exceed 255 characters.</div>
-            <div *ngIf="categoryForm.get('title').hasError('minlength')">Title must exceed 4 characters.</div>
-          </div>
-          <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" formControlName="description"></textarea>
-            <div *ngIf="categoryForm.get('description').hasError('required')">Description is required.</div>
-            <div *ngIf="categoryForm.get('description').hasError('maxlength')">Description cannot exceed 1000 characters.</div>
-            <div *ngIf="categoryForm.get('description').hasError('minlength')">Description must exceed 10 characters.</div>
-          </div>
-          <!-- Add other form controls here as needed -->
-          <button type="submit" class="btn btn-primary">Update</button>
-        </form>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Update an Existing Category</h2>
+      <form *ngIf="category" (submit)="updateData()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input [(ngModel)]="category.title" type="text" id="title" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea [(ngModel)]="category.description" id="description" name="description" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Category</button>
+      </form>
     </div>
   </div>
+</div>
+
+
+   {{category | json }}
+  
   

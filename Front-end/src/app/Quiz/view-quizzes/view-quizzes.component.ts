@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from 'app/auth/service/quiz.service';
-//import { MatCardModule } from '@angular/material/card'; // Import MatCardModule
 import { Quiz } from 'app/auth/models/quiz';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-quizzes',
@@ -14,9 +14,27 @@ export class ViewQuizzesComponent implements OnInit {
 
   constructor(private quizService: QuizService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.loadQuizzes();
+  }
+
+  loadQuizzes() {
     this.quizService.getQuizzes().subscribe((data) => {
-      this.quizzes = data;
+      // Reverse the order of the quizzes array to show the most recent quiz at the top
+      this.quizzes = data.reverse();
     });
+  }
+
+  deleteQuiz(qId) {
+    this.quizService.deleteQuiz(qId).subscribe(
+      (data) => {
+        
+        Swal.fire('Success', 'QUIZ deleted', 'success');
+        this.loadQuizzes(); // Refresh the quiz list
+      },
+      (error) => {
+        Swal.fire('Error', 'QUIZ not deleted', 'error');
+      }
+    );
   }
 }
