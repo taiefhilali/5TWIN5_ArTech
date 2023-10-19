@@ -1,0 +1,48 @@
+<div class="form-container">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Add a New Quiz</h2>
+      <form [formGroup]="quizForm" (ngSubmit)="addQuiz()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input [(ngModel)]="quizData.title" type="text" id="title" formControlName="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea [(ngModel)]="quizData.description" id="description" formControlName="description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="maxMarks">Max Mark</label>
+          <input [(ngModel)]="quizData.maxMarks" type="text" id="maxMark" formControlName="maxMark" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="numberofQuestions">Number of Questions</label>
+          <input [(ngModel)]="quizData.numberofQuestions" type="text" id="numberofQuestions" formControlName="numberofQuestions" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="active">Status</label>
+          <input type="checkbox" id="active" [(ngModel)]="quizData.active" name="active" class="form-control">
+        </div>
+        <!-- Add a dropdown to select the associated category -->
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" formControlName="category" [(ngModel)]="quizData.category.cid" class="form-control">
+            <option *ngFor="let cat of categories" [ngValue]="cat.cid">
+              {{ cat.title }}
+            </option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Quiz</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <!-- {{quizData | json }} -->
+  
+  
+  
+  
+  
+  
+  

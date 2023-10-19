@@ -1,0 +1,24 @@
+<div class="form-container">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Update an Existing Category</h2>
+      <form *ngIf="category" (submit)="updateData()">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input [(ngModel)]="category.title" type="text" id="title" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea [(ngModel)]="category.description" id="description" name="description" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Update Category</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+   {{category | json }}
+  
+  

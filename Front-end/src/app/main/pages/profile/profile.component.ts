@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.currentUser = user;
       });
       this.profileForm = this.fb.group({
+        password:[this.currentUser.password],
         username:[this.currentUser.username],
         role:[this.currentUser.role],
         firstName: [this.currentUser.firstName, [Validators.required]], 
@@ -147,7 +148,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
     }
     
+  }
 
+  selectAvatar(avatarUrl: string) {
+    this.profileForm.get('password').setValue(avatarUrl);
   }
 
 }

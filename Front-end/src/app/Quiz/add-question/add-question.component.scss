@@ -1,0 +1,49 @@
+/* Apply some basic styles */
+.bootstrap-wrapper {
+    margin: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  h2 {
+    margin-top: 20px;
+    color: #555;
+  }
+  
+  hr {
+    border-top: 1px solid #ccc;
+  }
+  
+  /* Center the "Add" button */
+  .text-center {
+    text-align: center;
+  }
+  
+  /* Style form elements */
+  .form-control {
+    margin-bottom: 10px;
+  }
+  
+  /* Style the "Add" button */
+  .btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+  }
+  
+  /* Change the button's color on hover */
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  

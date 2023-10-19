@@ -40,7 +40,7 @@ public class UserService {
         UsersResource usersResource = keycloakConfiguration.getUsersResource();
 
         usersResource.create(userKey);
-        user.setPassword("");
+        user.setPassword("https://bootdey.com/img/Content/avatar/avatar7.png");
         AppUser  savedUser = userRepository.save(user);
         senderService.sendEmail(user.getEmail(),user.getUsername());
 

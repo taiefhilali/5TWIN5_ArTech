@@ -1,0 +1,36 @@
+<div class="form-container">
+  <div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Add a New Category</h2>
+      <form (submit)="addCategory()" [formGroup]="categoryForm">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" formControlName="title" class="form-control" [ngClass]="{'is-invalid': categoryForm.get('title').invalid && categoryForm.get('title').touched}">
+          <div *ngIf="categoryForm.get('title').hasError('required')" class="error-message">
+            Title is required.
+          </div>
+          <div *ngIf="categoryForm.get('title').hasError('maxlength')" class="error-message">
+            Title cannot exceed 255 characters.
+          </div>
+          <div *ngIf="categoryForm.get('title').hasError('minlength')" class="error-message">
+            Title must exceed 4 characters.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" formControlName="description" class="form-control" [ngClass]="{'is-invalid': categoryForm.get('description').invalid && categoryForm.get('description').touched}"></textarea>
+          <div *ngIf="categoryForm.get('description').hasError('required')" class="error-message">
+            Description is required.
+          </div>
+          <div *ngIf="categoryForm.get('description').hasError('maxlength')" class="error-message">
+            Description cannot exceed 1000 characters.
+          </div>
+          <div *ngIf="categoryForm.get('description').hasError('minlength')" class="error-message">
+            Description must exceed 10 characters.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

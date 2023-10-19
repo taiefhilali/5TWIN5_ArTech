@@ -1,0 +1,82 @@
+// /* Custom styling for the card */
+// .card {
+//     background-color: #f8f9fa; /* Background color for the card */
+//     border: 1px solid #dee2e6; /* Border color */
+//     border-radius: 10px; /* Rounded corners */
+//     margin: 20px auto; /* Center the card */
+//     max-width: 500px; /* Adjust the maximum width to your preference */
+//     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+//   }
+  
+//   .card-title {
+//     color: #6e7071; /* Title text color */
+//   }
+  
+//   /* Custom styling for form elements */
+//   .form-group {
+//     margin-bottom: 15px; /* Spacing between form groups */
+//   }
+  
+//   label {
+//     font-weight: bold; /* Bold label text */
+//   }
+  
+//   /* Custom styling for the submit button */
+//   .btn-primary {
+//     background-color: #007bff; /* Button background color */
+//     border-color: #007bff; /* Button border color */
+//   }
+  
+//   .btn-primary:hover {
+//     background-color: #0056b3; /* Hover background color */
+//     border-color: #0056b3; /* Hover border color */
+//   }
+  
+//   /* Additional styling can be added as needed */
+  
+
+/* Style the labels to be bold */
+/* Add custom styles to the horizontal form */
+.form-container {
+  transition: box-shadow 0.3s; /* Add a smooth transition for the shadow on hover */
+  box-shadow: 0 0 10px rgba(88, 88, 88, 0.2); /* Add a default shadow */
+
+  /* Add padding and margin as needed */
+  padding: 20px;
+  margin: 10px;
+  .card {
+    .card-body {
+      .form-horizontal {
+        .form-group {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px;
+
+          label {
+            flex: 2;
+            margin-right: 10px;
+          }
+
+          .form-control {
+            flex: 8;
+          }
+        }
+      }
+    }
+  }
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+
+/* Style the select boxes with colored borders */
+.form-group :checked {
+  border: 2px solid #7f74dc; /* Change #ff0000 to the desired border color */
+  /* Add other styling as needed, e.g., padding, background color, etc. */
+}
+.form-container:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Change the shadow properties on hover */
+}

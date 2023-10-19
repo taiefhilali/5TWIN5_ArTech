@@ -1,0 +1,48 @@
+<!-- Add question to {{qTitle}} -->
+<a [routerLink]="'/add-question/' + qId + '/' + qTitle">
+  <i class="fa fa-plus"></i>
+</a>
+
+<div class="quiz-form">
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="custom-h2">Quiz Form </h2>
+        <h6 class="custom-h6">{{ questions.length }} Questions</h6>
+      </div>
+      <div class="quiz-questions">
+        <div *ngFor="let question of questions; let i = index" class="question-card card">
+          <div class="card-header">
+            <h4>Question {{ i + 1 }}</h4>
+          </div>
+          <div class="card-body">
+            <p>{{ question.content }}</p>
+            <ul class="options-list">
+              <li>
+                <label>
+                  <input type="radio" name="question{{ i }}" value="option1" /> {{ question.option1 }}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="question{{ i }}" value="option2" /> {{ question.option2 }}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="question{{ i }}" value="option3" /> {{ question.option3 }}
+                </label>
+              </li>
+              <li>
+                <label>
+                  <input type="radio" name="question{{ i }}" value="option4" /> {{ question.option4 }}
+                </label>
+              </li>
+            </ul>
+            <hr>
+            <p><b>Correct Answer: {{ question.answer }}</b></p>
+          </div>
+        </div>
+      </div>
+      
+  

@@ -1,0 +1,81 @@
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="bootsrap-wrapper">
+  <div class="row font-weight-bold">
+    All Quizzes
+  </div>
+  <button class="btn btn-primary">
+    <a routerLink="/add-quiz" style="color: white; text-decoration: none;">Add Category</a>
+  </button>
+<ul></ul>
+  <ul class="list-unstyled">
+    <li *ngFor="let quiz of quizzes" class="category-card">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <i class="fas fa-question-circle"></i> Quiz icon -->
+        <!-- </div>
+        <div class="card-body">
+            <h3>{{ quiz.title }}</h3>
+            <p>{{ quiz.description }}</p>
+            <p>Max Marks: {{ quiz.maxMark }}</p>
+            <p>Number of Questions: {{ quiz.numberofQuestions }}</p> -->
+          <!-- <i class="fas fa-edit edit-icon" (click)="editCategory(category)"></i>
+          <i class="fas fa-trash-alt delete-icon" (click)="deleteCategory(category)"></i> -->
+        <!-- </div>
+      </div>
+    </li>
+  </ul>
+
+
+</div> -->
+
+
+<h2>List of Quizzes</h2>
+<div class="center-container">
+<div class="quiz-cards">
+  <div *ngFor="let quiz of quizzes" class="quiz-card">
+    <div class="card-content">
+      <span class="quiz-icon bigger-icon">📝</span>
+      <h3 class="quiz-title">{{ quiz.title }}</h3>
+      <p class="quiz-description">{{ quiz.description }}</p>
+      <p class="max-marks-button">
+        <i class="fa fa-star"></i>
+        <span class="icon-text">{{ quiz.maxMarks }}</span>
+      </p>
+      <p class="num-questions-button">
+        <i class="fa fa-graduation-cap" ></i>
+        <span class="icon-text">{{ quiz.numberofQuestions }}</span>
+      </p>
+      
+      <!-- <p class="category-title">
+        Category: {{ quiz.category }}
+      </p> -->
+      <p  class="num-questions-button">
+        <!-- Use ngIf to conditionally display an icon or text based on the active status -->
+        <i class="fa" [ngClass]="{'fa-check-circle': quiz.active, 'fa-times-circle': !quiz.active}"></i>
+        {{ quiz.active ? 'Active' : 'Inactive' }}
+      </p>
+    </div>
+    <div class="card-buttons">
+      <div class="button-container">
+        <a [routerLink]="'/updatequiz/' + quiz.qId">
+          <i class="fa fa-edit"></i>
+        </a>
+        <a (click)="deleteQuiz(quiz.qId)" class="btn-icon">
+          <i class="fa fa-trash"></i>
+        </a>
+        <a [routerLink]="['/view-questions', quiz.qId, quiz.title]">
+          <i class="fa fa-question"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+

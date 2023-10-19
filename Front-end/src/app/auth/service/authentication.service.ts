@@ -69,6 +69,7 @@ export class AuthenticationService {
           if (response && response.access_token) {
             // Store user details and JWT token in local storage
             const user = {
+              password:response.user.password,
               username: response.user.username,
               email:response.user.email,
               firstName: response.user.firstName,
@@ -127,6 +128,7 @@ export class AuthenticationService {
       map((res) => {
         // Update the currentUser object with the new data
         const updatedUser = {
+          password:res.password,
           username: res.username,
           firstName: res.firstName,
           lastName: res.lastName,

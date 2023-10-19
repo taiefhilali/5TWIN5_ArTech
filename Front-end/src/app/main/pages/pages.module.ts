@@ -12,6 +12,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProfileModule } from './profile/profile.module';
 import { UsersModule } from './users/users.module';
+//import { BlogModule } from './blog/blog.module';
+
 @NgModule({
   declarations: [
   ],
@@ -26,6 +28,7 @@ import { UsersModule } from './users/users.module';
     MiscellaneousModule,
     ProfileModule,
     UsersModule
+  //  BlogModule
   ],
 
   providers: []

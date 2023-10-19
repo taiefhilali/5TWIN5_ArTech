@@ -1,0 +1,69 @@
+
+/* custom-styles.scss */
+
+.bootsrap-wrapper {
+    text-align: center;
+    padding: 10px;
+    display: contents;
+  flex-direction: column;
+
+  
+  
+    .row {
+      font-weight: bold;
+      font-size: 24px; /* Increase font size */
+      margin-bottom: 20px; /* Add some space between "All categories" and the list */
+    }
+  
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    li {
+      font-size: 18px; /* Increase font size */
+      margin-bottom: 10px; /* Add space between list items */
+    }
+  
+    .btn {
+      background-color: #807a95; /* Change button color */
+      border: none;
+      padding: 10px 20px;
+      margin-top: 20px; /* Add space between the list and the button */
+    }
+  
+    .btn a {
+      text-decoration: none;
+      color: white;
+    }
+  
+    .fas {
+      font-size: 24px; /* Increase the icon size */
+      margin-right: 10px; /* Add space between the icon and text */
+    }
+  }
+  .edit-icon,
+.delete-icon {
+  font-size: 24px;
+  margin-right: 10px; /* Add a gap between the icons */
+}
+
+.delete-icon i {
+  color: #7367f0 /* Change the trash icon color to red */
+}
+.edit-icon i {
+  color: #7367f0 /* Change the trash icon color to red */
+}
+
+
+/* Initially hide the icons */
+.edit-icon,
+.delete-icon {
+  display: none;
+}
+
+/* Show the icons when the cursor is on the card */
+.card:hover .edit-icon,
+.card:hover .delete-icon {
+  display: inline-block;
+}
