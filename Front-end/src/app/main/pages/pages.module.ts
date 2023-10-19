@@ -10,10 +10,13 @@ import { ContentHeaderModule } from 'app/layout/components/content-header/conten
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
-import { BlogModule } from './blog/blog.module';
+import { ProfileModule } from './profile/profile.module';
+import { UsersModule } from './users/users.module';
+//import { BlogModule } from './blog/blog.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     CoreCommonModule,
@@ -23,7 +26,9 @@ import { BlogModule } from './blog/blog.module';
     FormsModule,
     AuthenticationModule,
     MiscellaneousModule,
-    BlogModule
+    ProfileModule,
+    UsersModule
+  //  BlogModule
   ],
 
   providers: []

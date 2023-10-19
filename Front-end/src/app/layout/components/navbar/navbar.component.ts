@@ -15,6 +15,8 @@ import { User } from 'app/auth/models';
 
 import { coreConfig } from 'app/app-config';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteProfileModalComponent } from '../delete-profile-modal/delete-profile-modal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -75,6 +77,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    * @param {TranslateService} _translateService
    */
   constructor(
+    private _modalService: NgbModal,
     private _router: Router,
     private _authenticationService: AuthenticationService,
     private _coreConfigService: CoreConfigService,
@@ -223,4 +226,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this._unsubscribeAll.next();
     this._unsubscribeAll.complete();
   }
+  
+
+  openModal() {
+    const modalRef = this._modalService.open(DeleteProfileModalComponent, { backdropClass: 'light-blue-backdrop' });
+  }
+
 }

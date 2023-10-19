@@ -5,6 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CoreConfigService } from '@core/services/config.service';
+import { AuthenticationService } from 'app/auth/service';
 
 @Component({
   selector: 'app-auth-login-v2',
@@ -31,6 +32,7 @@ export class AuthLoginV2Component implements OnInit {
    * @param {CoreConfigService} _coreConfigService
    */
   constructor(
+    private authService:AuthenticationService,
     private _coreConfigService: CoreConfigService,
     private _formBuilder: UntypedFormBuilder,
     private _route: ActivatedRoute,
@@ -76,13 +78,20 @@ export class AuthLoginV2Component implements OnInit {
       return;
     }
 
-    // Login
-    this.loading = true;
+    const userObj = this.loginForm.value;
+    this.authService.login(userObj).subscribe({
+      next:(res)=>{
+        alert("Login Successful");
+        this.loginForm.reset();
+        this._router.navigate(['/home']);
 
-    // redirect to home page
-    setTimeout(() => {
-      this._router.navigate(['/']);
-    }, 100);
+      },error:(error)=>{
+        alert(error.message)
+        console.log("🚀 ~ file: sign-up.component.ts:34 ~ SignUpComponent ~ this.authService.signup ~ err:", error)
+
+      }
+    })
+
   }
 
   // Lifecycle Hooks
@@ -93,7 +102,7 @@ export class AuthLoginV2Component implements OnInit {
    */
   ngOnInit(): void {
     this.loginForm = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      username: ['', [Validators.required]],
       password: ['', Validators.required]
     });
 

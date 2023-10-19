@@ -9,6 +9,14 @@ export const menu: CoreMenu[] = [
     icon: 'home',
     url: 'home'
   },
+  {
+    id: 'users',
+    title: 'users',
+    translate: 'users',
+    type: 'item',
+    icon: 'users',
+    url: '/pages/users'
+  },
   
   {
     id: 'categories',
