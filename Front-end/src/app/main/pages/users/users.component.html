@@ -10,9 +10,15 @@
             </ol>
           </nav>
           <!-- /Breadcrumb -->
+
+          <!-- search bar -->
+
+          <input style="margin-bottom: 30px; margin-top: 10px;" type="text" class="form-control" [(ngModel)]="searchUsername" (ngModelChange)="filterUsers()" placeholder="Search by Username" />
+
+          <!-- end search bar-->
     
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm" >
-            <div class="col mb-3" *ngFor=" let user of Users; let i = index;" >
+            <div class="col mb-3" *ngFor=" let user of filteredUsers; let i = index;" >
               <div class="card">
                 <img src="https://www.bootdey.com/image/340x120/7B68EE/000000"   alt="Cover" class="card-img-top">
                 <div class="card-body text-center">

@@ -12,6 +12,7 @@ import { DeleteProfileModalComponent } from './components/delete-profile-modal/d
   exports: [VerticalLayoutModule, HorizontalLayoutModule],
   declarations: [
     DeleteProfileModalComponent
+    
   ]
 })
 export class LayoutModule {}
