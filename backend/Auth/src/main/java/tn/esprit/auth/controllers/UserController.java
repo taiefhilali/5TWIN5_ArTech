@@ -12,6 +12,7 @@ import tn.esprit.auth.services.LoginService;
 import tn.esprit.auth.services.UserService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -58,5 +59,15 @@ public class UserController {
     public ResponseEntity<AppUser> enableUserByUsername(@RequestBody String username) {
         return userService.enableUserByUsername(username);
     }
+    @GetMapping("/{username}")
+    public ResponseEntity<AppUser> getUserByUsername(@PathVariable String username) {
+        Optional<AppUser> userOptional = userService.getUserByUsername(username);
 
+        if (userOptional.isPresent()) {
+            AppUser user = userOptional.get();
+            return ResponseEntity.ok(user);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

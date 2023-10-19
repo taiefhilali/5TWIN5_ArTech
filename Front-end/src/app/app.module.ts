@@ -33,6 +33,8 @@ import { UpdateQuizzesComponent } from './Quiz/update-quizzes/update-quizzes.com
 import { ViewQuestionsComponent } from './Quiz/view-questions/view-questions.component';
 import { ViewQuizQuestionsComponent } from './Quiz/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './Quiz/add-question/add-question.component';
+import { ChatComponent } from './chat/chat/chat.component';
+import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
 
 const appRoutes: Routes = [
   {
@@ -53,7 +55,7 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, ChatComponent, LoadQuizComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
