@@ -1,0 +1,71 @@
+.quiz-questions {
+  .question-card {
+    margin-bottom: 20px;
+    border: 1px solid #d5d5da;
+    border-radius: 5px;
+
+    .card-header {
+      background-color: #7267f08b;
+      
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      transition: background-color 0.3s; /* Smooth transition effect */
+    }
+    
+    .card-header:hover {
+      background-color: #ddd; /* Change the background color on hover */
+    }
+    .card-body {
+      padding: 20px;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .options-list {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin: 10px 0;
+
+          label {
+            display: block;
+
+            input[type="radio"] {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+
+      hr {
+        margin: 20px 0;
+      }
+
+      p b {
+        font-weight: bold;
+        color: #7e837f; /* Green color for correct answer */
+      }
+    }
+  }
+
+  button.btn-primary {
+    display: block;
+    margin: 0 auto;
+  }
+}
+/* CSS to hide the button by default and style it */
+.btn-icon {
+  display: none;
+  padding: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #7b8a99; /* Change the color to your preferred color */
+}
+
+/* CSS to show the button on hover */
