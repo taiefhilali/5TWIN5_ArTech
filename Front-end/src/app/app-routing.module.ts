@@ -31,7 +31,7 @@ const routes: Routes = [
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] },},
   { path: 'add-question/:qid/:title', component: AddQuestionComponent,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
-  { path: 'load-quiz/:cId', component: ChatComponent ,
+  { path: 'load-quiz/:cid', component: ChatComponent ,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] },},
   { path: 'chat/:username', component: ChatComponent
   ,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
