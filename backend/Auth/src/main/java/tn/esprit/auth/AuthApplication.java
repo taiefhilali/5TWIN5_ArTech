@@ -5,6 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -15,8 +17,10 @@ import tn.esprit.auth.config.KeycloakConfig;
 import tn.esprit.auth.config.SecurityConfig;
 import tn.esprit.auth.services.EmailSenderService;
 
+
 @SpringBootApplication
 @Import({KeycloakConfig.class,SecurityConfig.class})
+@EnableEurekaClient
 @ComponentScan(basePackages = {"tn.esprit.auth.controllers", "tn.esprit.auth.services","tn.esprit.auth.config","tn.esprit.auth.repositories"})
 public class AuthApplication {
 

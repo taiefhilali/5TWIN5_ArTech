@@ -16,7 +16,7 @@ quizzes;
   ngOnInit(): void {
     console.log('Quiz Data:', this.quizzes);
 
-this.catId=this.route.snapshot.params.catId;
+this.catId=this.route.snapshot.params.cid;
 if(this.catId ==0){
   console.log("Load all the quiz");
 
