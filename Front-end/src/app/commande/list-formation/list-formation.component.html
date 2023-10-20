@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="formation-list">
+          <div *ngFor="let formation of formations" class="formation-item card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ formation.nom }}</h5>
+              <p class="card-text">Prix: {{ formation.prix }} €</p>
+              <button (click)="acheterFormation(formation)" class="btn btn-primary">Buy</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
