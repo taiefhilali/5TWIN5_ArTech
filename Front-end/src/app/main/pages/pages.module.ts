@@ -12,10 +12,15 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { ProfileModule } from './profile/profile.module';
 import { UsersModule } from './users/users.module';
+import { ChatModule } from './chat/chat.module';
+import { GroupChatComponent } from './group-chat/group-chat.component';
+import { GroupChatModule } from './group-chat/group-chat.module';
 //import { BlogModule } from './blog/blog.module';
 
 @NgModule({
   declarations: [
+  
+  
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,9 @@ import { UsersModule } from './users/users.module';
     AuthenticationModule,
     MiscellaneousModule,
     ProfileModule,
-    UsersModule
+    UsersModule,
+    ChatModule,
+    GroupChatModule
   //  BlogModule
   ],
 
