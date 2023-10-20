@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
-import { Observable } from 'rxjs';
 
 
 
