@@ -13,7 +13,7 @@ import { AuthGuard } from './auth/helpers/auth.guards';
 import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-posts.component';
 import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.component';
 import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
-import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
+import { CvViewComponent } from './Posts/cv-view/cv-view.component';
 
 
 const routes: Routes = [
@@ -43,6 +43,7 @@ const routes: Routes = [
   { path: 'details-posts/:postId', component: DetailsPostsComponent },
 
   
+  { path: 'cv', component: CvViewComponent },
 
 
 
