@@ -1,0 +1,26 @@
+
+              <!-- Blog Comment -->
+              <div class="col-12 mt-1" id="blogComment">
+                <h6 class="section-label mt-25">Comment</h6>
+                <div class="card" *ngFor="let comment of comments" >
+                  <div class="card-body">
+                    <div class="media">
+                      <div class="avatar mr-75">
+                        <img   src="assets/images/portrait/small/avatar-s-6.jpg" width="38" height="38" alt="Avatar" />
+                      </div>
+                      <div class="media-body">
+                        <h6 class="font-weight-bolder mb-25">{{ comment.name }}</h6>
+                        <p class="card-text">{{ comment.dateCommented| date:'short' }}</p>
+                        <p class="card-text">{{ comment.comment }}</p>
+                        <a href="javascript:void(0);">
+                          <!-- <div class="d-inline-flex align-items-center">
+                            <i data-feather="corner-up-left" class="font-medium-3 mr-50"></i>
+                            <span>Reply</span>
+                          </div> -->
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </div>

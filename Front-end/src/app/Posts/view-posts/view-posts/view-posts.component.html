@@ -1,0 +1,140 @@
+<div class="blog-wrapper">
+    <div class="content-wrapper container-xxl p-0">
+      <!-- content-header component -->
+  
+      <div class="content-detached content-left">
+        <div class="content-body">
+          <!-- Blog List -->
+          <div class="blog-list-wrapper">
+            <!-- Blog List Items -->
+            <div class="row">
+              <div class="col-md-6 col-12"  *ngFor="let post of posts">
+                <div class="card">
+                  <a [routerLink]="['/details-posts/', post.postId]">
+                    <img class="card-img-top rounded" alt="Recent Post Pic" [src]="'../assets/images/pages/content-img-3.jpg'" />
+                  </a>
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a
+                      [routerLink]="['/details-posts/', post.postId]"
+                        class="blog-title-truncate text-body-heading"
+                        >{{ post.postTitle }}</a
+                      >
+                    </h4>
+                    <div class="media">
+                      <div class="avatar mr-50">
+                      <img  src="assets/images/portrait/small/avatar-s-6.jpg" alt="Avatar" width="24" height="24" />
+                      </div>
+                      <div class="media-body">
+                        <small class="text-muted mr-25">by</small>
+                        <small
+                          ><a href="javascript:void(0);" class="text-body">siwar nfaiedh</a></small
+                        >
+                        <span class="text-muted ml-50 mr-25">|</span>
+                        <small class="text-muted">{{ post.dateCreated | date: 'mediumDate' }}</small>
+                      </div>
+                    </div>
+                    <div class="my-1 py-25">
+                      <div
+                        class="badge badge-pill mr-50"
+                        [ngClass]="{
+                          'bg-light-info': post.category === 'ANGULAR',
+                          'bg-light-primary': post.category === 'SPRINGBOOT',
+                          'bg-light-danger': post.category === 'REACT',
+                          'bg-light-warning': post.category === 'LARAVEL'
+                        }"
+                      >
+                        {{ post.category }}
+                      </div>
+                    </div>
+                   
+                    
+                    <p class="card-text blog-content-truncate">{{ post.postDescription }}</p>
+                    <hr />
+                    <div class="d-flex justify-content-between align-items-center" style="float: right;">
+                    
+                      <a [routerLink]="['/details-posts/', post.postId]">Read More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--/ Blog List Items -->
+  
+            <!-- Pagination -->
+            <div class="row">
+              <div class="col-12">
+                <nav aria-label="Page navigation">
+                  <ul class="pagination justify-content-center mt-2">
+                    <li class="page-item prev-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                    <li class="page-item active" aria-current="page">
+                      <a class="page-link" href="javascript:void(0);">4</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">5</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">6</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">7</a></li>
+                    <li class="page-item next-item"><a class="page-link" href="javascript:void(0);"></a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <!--/ Pagination -->
+          </div>
+          <!--/ Blog List -->
+        </div>
+      </div>
+      <div class="sidebar-detached sidebar-right">
+        <div class="sidebar">
+          <div class="blog-sidebar my-2 my-lg-0">
+            <div class="blog-sidebar my-2 my-lg-0">
+              <div class="blog-search">
+                <div class="input-group input-group-merge">
+        <input type="text" class="form-control"  [(ngModel)]="selectedCategory" placeholder="Type to search" (input)="filterPostsByCategory($event)">
+        <div class="input-group-append">
+          <span class="input-group-text cursor-pointer">
+            <i data-feather="search"></i>
+          </span></div>
+            </div>
+          
+            
+  
+  
+            <!-- Categories -->
+            <div class="blog-categories mt-3">
+              <h6 class="section-label">Categories</h6>
+              <div class="mt-1" >
+                <div class="d-flex justify-content-start align-items-center mb-75">
+                 <a href="javascript:void(0);" >
+                    <div *ngFor="let category of categories" class="mr-10">
+                      <a href="javascript:void(0);" class="mr-10">
+                        <div
+                          class="badge badge-pill mr-50"
+                          [ngClass]="{
+                            'bg-light-info': category === 'ANGULAR',
+                            'bg-light-primary': category === 'SPRINGBOOT',
+                            'bg-light-danger': category === 'REACT',
+                            'bg-light-warning': category === 'LARAVEL'
+                          }"
+                        >
+                          {{ category }}
+                        </div>
+                      </a>
+                    </div>
+                              </a>
+                  <a href="javascript:void(0);">
+                    <!-- <div class="blog-category-title text-body">category1</div> -->
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+            <!--/ Categories -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

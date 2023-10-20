@@ -30,9 +30,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         return loginService.login(loginRequest);
     }
+
     @PreAuthorize("#oauth2.hasScope('role:TEACHER') || #oauth2.hasScope('role:USER') ")
 
     @PutMapping("/update/{id}")
@@ -40,13 +41,15 @@ public class UserController {
         user.setId(id);
         return userService.updateUser(user);
     }
+
     @PreAuthorize("#oauth2.hasScope('role:TEACHER') || #oauth2.hasScope('role:USER') || #oauth2.hasScope('role:ADMIN')")
 
     @DeleteMapping("/delete/{username}/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id ,@PathVariable String username) {
-        userService.deleteUser(id,username);
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id, @PathVariable String username) {
+        userService.deleteUser(id, username);
         return ResponseEntity.noContent().build();
     }
+
     @PreAuthorize("#oauth2.hasScope('role:TEACHER') || #oauth2.hasScope('role:USER') || #oauth2.hasScope('role:ADMIN')")
 
     @GetMapping("/all")
@@ -59,15 +62,17 @@ public class UserController {
     public ResponseEntity<AppUser> enableUserByUsername(@RequestBody String username) {
         return userService.enableUserByUsername(username);
     }
+
     @GetMapping("/{username}")
     public ResponseEntity<AppUser> getUserByUsername(@PathVariable String username) {
         Optional<AppUser> userOptional = userService.getUserByUsername(username);
 
         if (userOptional.isPresent()) {
             AppUser user = userOptional.get();
-            return ResponseEntity.ok(user);
+            return ResponseEntity.ok(user); // Return a 200 OK response with the user
         } else {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build(); // Return a 404 Not Found response
         }
     }
+
 }

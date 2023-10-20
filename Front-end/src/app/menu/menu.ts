@@ -17,6 +17,14 @@ export const menu: CoreMenu[] = [
     icon: 'users',
     url: '/pages/users'
   },
+  {
+    id: 'groups',
+    title: 'groups',
+    translate: 'groups',
+    type: 'item',
+    icon: 'users',
+    url: '/pages/chat'
+  },
   
   {
     id: 'categories',

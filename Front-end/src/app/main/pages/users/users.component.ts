@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'app/auth/service';
 import { CommonModule } from '@angular/common';
+import { ChatService } from 'app/auth/service/chat.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -11,8 +13,8 @@ export class UsersComponent implements OnInit {
   Users:any;
   searchUsername: string = '';
   filteredUsers: any[]; 
-
-  constructor(private authService:AuthenticationService) { 
+currentUser:any;
+  constructor(private authService:AuthenticationService,private chatService:ChatService,private Route:Router) { 
     this.authService.getAllusers().subscribe({
       next:(res)=>{
         this.Users=res
@@ -24,6 +26,9 @@ export class UsersComponent implements OnInit {
 
       }
     })
+    this.authService.currentUser.subscribe((user) => {
+      this.currentUser = user;
+    });
   }
 
   ngOnInit(): void {
@@ -37,6 +42,8 @@ export class UsersComponent implements OnInit {
       return usernameMatch ;
     });
   }
+
+
   
 
 }

@@ -1,0 +1,92 @@
+
+<app-view-comment></app-view-comment>
+
+
+              <!--/ Blog Comment -->
+  
+              <!-- Leave a Blog Comment -->
+               <!-- Form -->
+              <div class="col-12 mt-1">
+                <h6 class="section-label mt-25">Leave a Comment</h6>
+                <div class="card">
+                  <div class="card-body">
+                    <form (submit)="onSubmit()" [formGroup]="commentForm"   class="mt-2">
+                        <div class="row">
+                        <div class="col-sm-6 col-12">
+                          <div class="form-group mb-2" [ngClass]="{'has-error': commentForm.get('name').invalid && commentForm.get('name').touched}">
+
+                            <input type="text"  
+                            id="blog-edit-title"
+                            name="blog-edit-title"
+
+                            formControlName="name" class="form-control" 
+                            [ngClass]="{'is-invalid': commentForm.get('name').invalid && 
+                            commentForm.get('name').touched}">
+                            <div *ngIf="commentForm.get('name').hasError('required')" class="error-message">
+                              Name is required.
+                            </div>
+                            <div *ngIf="commentForm.get('name').hasError('maxlength')" class="error-message">
+                              Name cannot exceed 255 characters.
+                            </div>
+                            <div *ngIf="commentForm.get('name').hasError('minlength')" class="error-message">
+                              Name must exceed 4 characters.
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-12">
+                          <div class="form-group mb-2" [ngClass]="{'has-error': commentForm.get('email').invalid && commentForm.get('email').touched}">
+
+                            <input type="text"  
+                            id="blog-edit-title"
+                            name="blog-edit-title"
+
+                            formControlName="email" class="form-control" 
+                            [ngClass]="{'is-invalid': commentForm.get('email').invalid && 
+                            commentForm.get('email').touched}">
+                            <div *ngIf="commentForm.get('email').hasError('required')" class="error-message">
+                              email is required.
+                            </div>
+                           
+                          </div>
+                        </div>
+
+
+                        <div class="col-12">
+                          <div class="form-group" [ngClass]="{'has-error': commentForm.get('comment').invalid && commentForm.get('comment').touched}">
+                            <textarea
+                              class="form-control"
+                              rows="4"
+                              class="form-control mb-2" rows="4" formControlName="comment" placeholder="Comment"
+                              [ngClass]="{'is-invalid': commentForm.get('comment').invalid && commentForm.get('comment').touched}"
+                            ></textarea>
+                            <div *ngIf="commentForm.get('comment').hasError('required')" class="error-message">
+                              Comment is required.
+                            </div>
+                            <div *ngIf="commentForm.get('comment').hasError('maxlength')" class="error-message">
+                              Comment cannot exceed 1000 characters.
+                            </div>
+                            <div *ngIf="commentForm.get('comment').hasError('minlength')" class="error-message">
+                              Comment must be at least 10 characters long.
+                            </div>
+                          </div>
+                          
+                        </div>
+                        <div class="col-12">
+                          <div class="custom-control custom-checkbox mb-2">
+                            <input type="checkbox" class="custom-control-input" id="blogCheckbox" />
+                            <label class="custom-control-label" for="blogCheckbox"
+                              >Save my name, email, and website in this browser for the next time I comment.</label
+                            >
+                          </div>
+                        </div>
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-primary" rippleEffect>Post Comment</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <!--/ Leave a Blog Comment -->

@@ -33,8 +33,14 @@ import { UpdateQuizzesComponent } from './Quiz/update-quizzes/update-quizzes.com
 import { ViewQuestionsComponent } from './Quiz/view-questions/view-questions.component';
 import { ViewQuizQuestionsComponent } from './Quiz/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './Quiz/add-question/add-question.component';
-import { ChatComponent } from './chat/chat/chat.component';
 import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
+import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.component';
+import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
+import { CreateCommentComponent } from './Posts/create-comment/create-comment/create-comment.component';
+import { ViewCommentComponent } from './Posts/view-comment/view-comment/view-comment.component';
+import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-posts.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+
 
 const appRoutes: Routes = [
   {
@@ -55,8 +61,10 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, ChatComponent, LoadQuizComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent],
   imports: [
+    NgSelectModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

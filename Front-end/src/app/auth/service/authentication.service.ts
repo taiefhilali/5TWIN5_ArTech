@@ -106,6 +106,7 @@ export class AuthenticationService {
           return response;
         })
       );
+      
   }
   
   
@@ -166,6 +167,7 @@ enableUser(username:any){
 getAllusers(){
   return this._http.get<any>(`${environment.apiUrl}/user/all`)
 }
+
 getByUsername(username: String) {
   return this._http.get<User>(`${environment.apiUrl}/user/${username}`);
 }
