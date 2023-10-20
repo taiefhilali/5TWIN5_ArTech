@@ -15,6 +15,12 @@ import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.com
 import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
 import { CvViewComponent } from './Posts/cv-view/cv-view.component';
 import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
+import { CoursListComponent } from './Cours/cours-list/cours-list.component';
+import { CoursAddComponent } from './Cours/cours-add/cours-add.component';
+import { CoursEditComponent } from './Cours/cours-edit/cours-edit.component';
+import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+import { FormationAddComponent } from './Formation/formation-add/formation-add.component';
+
 
 const routes: Routes = [
   // Other routes
@@ -44,6 +50,18 @@ const routes: Routes = [
 
   
   { path: 'cv', component: CvViewComponent },
+  { path: 'categories', component: ViewCategoriesComponent },
+  { path: 'add-category', component: AddCategoryComponent },
+  { path: 'quizzes', component: ViewQuizzesComponent },
+  { path: 'updatecat/:id', component:UpdateCategoryComponent },
+  { path: 'cours', component:  CoursListComponent},
+  { path: 'cours/add', component:  CoursAddComponent},
+  { path: 'cours/edit', component:  CoursEditComponent},
+  { path: 'formation', component:  FormationListComponent},
+  { path: 'formation/add', component:  FormationAddComponent},
+
+
+
 
 
 

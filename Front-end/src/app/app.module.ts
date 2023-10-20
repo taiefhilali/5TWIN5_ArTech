@@ -43,6 +43,14 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { CvService } from './auth/service/cv.service';
 import { CommonModule } from '@angular/common';
 import { CvViewComponent } from './Posts/cv-view/cv-view.component';
+import { CoursListComponent } from './Cours/cours-list/cours-list.component';
+import { CoursAddComponent } from './Cours/cours-add/cours-add.component';
+import { CoursEditComponent } from './Cours/cours-edit/cours-edit.component';
+import { FormationAddComponent } from './Formation/formation-add/formation-add.component';
+import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+
+
+
 
 
 const appRoutes: Routes = [
@@ -64,7 +72,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent,CvViewComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, 
+    DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent,
+     LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent,
+     CvViewComponent,CoursListComponent, CoursAddComponent, 
+    CoursEditComponent, FormationAddComponent, FormationListComponent
+  ],
   imports: [
     NgSelectModule,
     BrowserModule,
@@ -95,6 +108,6 @@ const appRoutes: Routes = [
   ],
 
   bootstrap: [AppComponent],
-  providers: [CategoryService,QuizService,CvService],
+  providers: [CategoryService,QuizService,CvService,],
 })
 export class AppModule {}
