@@ -15,7 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.web.client.RestTemplate;
 import tn.esprit.auth.config.KeycloakConfig;
 import tn.esprit.auth.config.SecurityConfig;
-import tn.esprit.auth.services.EmailSenderService;
 
 
 @SpringBootApplication

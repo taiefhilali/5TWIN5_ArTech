@@ -13,6 +13,7 @@ import { AuthGuard } from './auth/helpers/auth.guards';
 import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-posts.component';
 import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.component';
 import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
+import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
 
 
 const routes: Routes = [
@@ -33,6 +34,8 @@ const routes: Routes = [
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] },},
   { path: 'add-question/:qid/:title', component: AddQuestionComponent,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
+  { path: 'load-quiz/:cid', component: LoadQuizComponent,
+  canActivate: [AuthGuard], data: { roles: ['ADMIN','USER'] }, },
   
   { path: 'create-posts', component: CreatePostsComponent },
 

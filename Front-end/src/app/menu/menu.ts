@@ -71,6 +71,13 @@ export const menu: CoreMenu[] = [
         icon: 'circle',
         url: '/add-quiz', // URL for the second dropdown item
       },
+      {
+        id: 'load-quiz',
+        title: 'Load Quizzes',
+        type: 'item',
+        icon: 'circle',
+        url: '/load-quiz/0', // URL for the second dropdown item
+      },
       // Add more dropdown items as needed
     ]
   }
