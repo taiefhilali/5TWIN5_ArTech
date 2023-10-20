@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <div *ngFor="let commande of commandes" class="card mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Commande ID : {{ commande.id }}</h5>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Date: {{ commande.date | date:'short' }}</p>
+          <p class="card-text">État: {{ commande.etat }}</p>
+        </div>
+        <div class="card-footer">
+          <!-- Add a "Confirmer" button here -->
+          <button (click)="confirmerCommande(commande.id)" class="btn btn-primary">Confirmer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,6 +48,8 @@ import { CoursAddComponent } from './Cours/cours-add/cours-add.component';
 import { CoursEditComponent } from './Cours/cours-edit/cours-edit.component';
 import { FormationAddComponent } from './Formation/formation-add/formation-add.component';
 import { FormationListComponent } from './Formation/formation-list/formation-list.component';
+import { ListFormationComponent } from './commande/list-formation/list-formation.component';
+import { ListAdminCommandeComponent } from './commande/list-admin-commande/list-admin-commande.component';
 
 
 
@@ -76,7 +78,8 @@ const appRoutes: Routes = [
     DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent,
      LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent,
      CvViewComponent,CoursListComponent, CoursAddComponent, 
-    CoursEditComponent, FormationAddComponent, FormationListComponent
+    CoursEditComponent, FormationAddComponent, FormationListComponent,
+    ListFormationComponent,ListAdminCommandeComponent
   ],
   imports: [
     NgSelectModule,

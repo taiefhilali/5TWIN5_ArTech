@@ -20,6 +20,8 @@ import { CoursAddComponent } from './Cours/cours-add/cours-add.component';
 import { CoursEditComponent } from './Cours/cours-edit/cours-edit.component';
 import { FormationListComponent } from './Formation/formation-list/formation-list.component';
 import { FormationAddComponent } from './Formation/formation-add/formation-add.component';
+import { ListFormationComponent } from './commande/list-formation/list-formation.component';
+import { ListAdminCommandeComponent } from './commande/list-admin-commande/list-admin-commande.component';
 
 
 const routes: Routes = [
@@ -59,6 +61,9 @@ const routes: Routes = [
   { path: 'cours/edit', component:  CoursEditComponent},
   { path: 'formation', component:  FormationListComponent},
   { path: 'formation/add', component:  FormationAddComponent},
+
+  { path: 'formationsC', component: ListFormationComponent },
+  { path: 'Admin-commande', component: ListAdminCommandeComponent },
 
 
 
