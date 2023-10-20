@@ -14,7 +14,7 @@ import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-p
 import { ViewPostsComponent } from './Posts/view-posts/view-posts/view-posts.component';
 import { DetailsPostsComponent } from './Posts/details-posts/details-posts/details-posts.component';
 import { CvViewComponent } from './Posts/cv-view/cv-view.component';
-
+import { LoadQuizComponent } from './Quiz/load-quiz/load-quiz.component';
 
 const routes: Routes = [
   // Other routes
