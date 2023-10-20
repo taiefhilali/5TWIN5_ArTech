@@ -1,0 +1,13 @@
+tn\esprit\auth\config\KeycloakConfig.class
+tn\esprit\auth\entities\AppUser.class
+tn\esprit\auth\controllers\UserController.class
+tn\esprit\auth\AuthApplication.class
+tn\esprit\auth\entities\LoginRequest.class
+tn\esprit\auth\entities\LoginResponse.class
+tn\esprit\auth\entities\Credentials.class
+tn\esprit\auth\services\UserService.class
+tn\esprit\auth\config\SecurityConfig.class
+tn\esprit\auth\config\KeycloakConfiguration.class
+tn\esprit\auth\services\EmailSenderService.class
+tn\esprit\auth\repositories\UserRepository.class
+tn\esprit\auth\services\LoginService.class
