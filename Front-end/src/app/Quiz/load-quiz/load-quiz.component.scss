@@ -1,0 +1,56 @@
+load quiz scss
+
+.simple-card {
+    width: 10cm;
+    height: 5cm;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 15px;
+    text-align: center;
+
+  }
+  .my-card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+  
+  .btn-link.btn-icon {
+    background: transparent;
+    border: none;
+    color: #81868e7e; /* Text color, change to your preference */
+    cursor: pointer;
+  }
+  
+  .btn-link.btn-icon:hover {
+    color: #c5d2df; /* Text color on hover, change to your preference */
+    text-decoration: none;
+  }
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .icon-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .edit-icon,
+  .delete-icon {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .edit-icon {
+    color: #007BFF;
+    margin-right: 10px;
+  }
+  
+  .delete-icon {
+    color: #FF3D00;
+  }
+  

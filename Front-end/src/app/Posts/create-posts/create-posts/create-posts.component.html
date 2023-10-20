@@ -1,0 +1,172 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+      <!-- content-header component -->
+  
+      <!-- Blog Edit -->
+      <div class="blog-edit-wrapper">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="media">
+                  <div class="avatar mr-75">
+                   <img src="assets/images/portrait/small/avatar-s-6.jpg"  width="38" height="38" alt="Avatar" />
+                  </div>
+                  
+                  <div class="media-body">
+
+                   <h6 class="mb-25">siwar enfaiedh</h6>
+                   <p class="card-text">{{ currentDate | date:'dd/MM/yyyy' }}</p>
+                </div>
+                </div>
+                <!-- Form -->
+                <form (submit)="addPost()" [formGroup]="PostForm"  class="mt-2">
+                    <div class="row">
+                    <div class="col-md-6 col-12">
+                      <div class="form-group mb-2">
+                        <div class="form-group" [ngClass]="{'has-error': PostForm.get('postTitle').invalid && PostForm.get('postTitle').touched}">
+
+                        <label for="blog-edit-title">postTitle</label>
+                        <!-- <input
+                          type="text"
+                          id="blog-edit-title"
+                          name="blog-edit-title"
+                          class="form-control"
+                        /> -->
+                        <input type="text"            
+                       id="blog-edit-title"
+                       name="blog-edit-title"
+                       class="form-control"
+
+                         formControlName="postTitle" class="form-control" 
+                         [ngClass]="{'is-invalid': PostForm.get('postTitle').invalid && 
+                         PostForm.get('postTitle').touched}">
+                         <div *ngIf="PostForm.get('postTitle').hasError('required')" class="error-message">
+                          postTitle is required.
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+
+                    <div class="col-md-6 col-12">
+                      <div class="form-group mb-2">
+                        <label for="blog-edit-category">Category</label>
+                        <ng-select
+
+                          [items]="categories"
+                          [ngModel]="PostForm.value.category"
+                          (ngModelChange)="PostForm.controls['category'].setValue($event)"
+                          [closeOnSelect]="false"
+                          [searchable]="false"
+                          name="selectTitle"
+                        >
+                        </ng-select>
+                      </div>
+                    </div>
+                    
+                      
+
+
+                    <div class="col-md-6 col-12">
+                      <div class="form-group mb-2">
+                        <div class="form-group" [ngClass]="{'has-error': PostForm.get('postDescription').invalid && PostForm.get('postDescription').touched}">
+                        <label for="blog-edit-slug" >postDescription</label>
+                        <input type="text" id="blog-edit-slug"             
+                       class="form-control"
+                        id="blog-edit-slug"
+                        style="height: 40px !important;"
+                        formControlName="postDescription" class="form-control"
+                         [ngClass]="{'is-invalid': PostForm.get('postDescription')
+                        .invalid && PostForm.get('postDescription').touched}">
+                        <div *ngIf="PostForm.get('postDescription').hasError('required')" class="error-message">
+                            postDescription is required.
+                          </div>
+                          <div *ngIf="PostForm.get('postDescription').hasError('maxlength')" class="error-message">
+                            postDescription cannot exceed 255 characters.
+                          </div>
+                          <div *ngIf="PostForm.get('postDescription').hasError('minlength')" class="error-message">
+                            postDescription must exceed 4 characters.
+                          </div>
+                      </div>
+                    </div>
+
+
+                    <!-- <div class="col-md-6 col-12">
+                      <div class="form-group mb-2">
+                        <label for="blog-edit-status">Status</label>
+                        <select
+                          class="form-control"
+                          id="blog-edit-status"
+                          name="blog-edit-status"
+                        >
+                          <option value="Published">Published</option>
+                          <option value="Pending">Pending</option>
+                          <option value="Draft">Draft</option>
+                        </select>
+                      </div>
+                    </div> -->
+                   
+                    <!-- <div class="col-12">
+                        <div class="form-group mb-2">
+                            <label>Content</label>
+                            <input
+                            type="text"
+                            id="blog-edit-title"
+                            name="blog-edit-title"
+                            class="form-control"
+                          />
+                          </div>
+                      </div> -->
+                      <div class="col-12 mb-2">
+                        <div class="border rounded p-2">
+                          <h4 class="mb-1">Featured Image</h4>
+                          <div class="media flex-column flex-md-row">
+                            <img
+                            [src]="'../assets/images/pages/content-img-3.jpg'"
+                                                        id="blog-feature-image"
+                              class="rounded mr-2 mb-1 mb-md-0"
+                              width="170"
+                              height="110"
+                              alt="Blog Featured Image"
+                            />
+                            <div class="media-body">
+                              <small class="text-muted">Required image resolution 800x400, image size 10mb.</small>
+                              <p class="my-50">
+                                <a href="javascript:void(0);" id="blog-image-text"
+                                  >C:\fakepath\</a
+                                >
+                              </p>
+                              <div class="d-inline-block">
+                                <div class="form-group mb-0">
+                                  <div class="custom-file">
+                                    <input
+                                      type="file"
+                                      class="custom-file-input"
+                                      id="blogCustomFile"
+                                      accept="image/*"
+                                    />
+                                    <label class="custom-file-label" for="blogCustomFile">Choose file</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="col-12 mt-50">
+                        <button type="submit" class="btn btn-primary mr-1" rippleEffect>Save Changes</button>
+                         <button type="reset" class="btn btn-outline-secondary" rippleEffect>Cancel</button> 
+                    </div>
+                  </div>
+                  </div>
+                </form>
+                <!--/ Form -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--/ Blog Edit -->
+    </div>
+  </div>
+  
