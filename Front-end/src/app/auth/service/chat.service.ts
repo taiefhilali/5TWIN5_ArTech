@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { io, Socket } from 'socket.io-client';
+
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import * as signalR from '@microsoft/signalr';
+import { Observable } from 'rxjs';
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -65,6 +69,7 @@ export class ChatService {
 
   public async LeaveChat(){
     return this.connection.stop();
+
   }
 
 }

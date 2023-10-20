@@ -59,17 +59,14 @@ public class UserController {
     public ResponseEntity<AppUser> enableUserByUsername(@RequestBody String username) {
         return userService.enableUserByUsername(username);
     }
+    @GetMapping("/{username}")
+    public ResponseEntity<AppUser> getUserByUsername(@PathVariable String username) {
+        Optional<AppUser> userOptional = userService.getUserByUsername(username);
+
 
     @GetMapping("/{username}")
     public ResponseEntity<AppUser> getUserByUsername(@PathVariable String username) {
         Optional<AppUser> userOptional = userService.getUserByUsername(username);
 
-        if (userOptional.isPresent()) {
-            AppUser user = userOptional.get();
-            return ResponseEntity.ok(user);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
 }

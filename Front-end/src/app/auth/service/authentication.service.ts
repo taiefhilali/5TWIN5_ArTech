@@ -168,11 +168,8 @@ getAllusers(){
   return this._http.get<any>(`${environment.apiUrl}/user/all`)
 }
 
-getUserByUsername(username:any){
-  return this._http.get<any>(`${environment.apiUrl}/user/${username}`)
+getByUsername(username: String) {
+  return this._http.get<User>(`${environment.apiUrl}/user/${username}`);
 }
-
-
-
   }
 
