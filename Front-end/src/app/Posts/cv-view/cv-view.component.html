@@ -1,0 +1,15 @@
+<input type="file" (change)="onFileChange($event)" />
+<button (click)="uploadCv()">Upload CV</button>
+
+<div *ngFor="let cv of cvs">
+  <h3>{{ cv.cv }}</h3>
+  <p>{{ cv.content }}</p>
+  <ul>
+    <li *ngFor="let skill of cv.skills">{{ skill }}</li>
+  </ul>
+  <ul>
+    <li *ngFor="let experience of cv.experiences">{{ experience }}</li>
+  </ul>
+  
+  <hr />
+</div>

@@ -40,6 +40,9 @@ import { CreateCommentComponent } from './Posts/create-comment/create-comment/cr
 import { ViewCommentComponent } from './Posts/view-comment/view-comment/view-comment.component';
 import { CreatePostsComponent } from './Posts/create-posts/create-posts/create-posts.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { CvService } from './auth/service/cv.service';
+import { CommonModule } from '@angular/common';
+import { CvViewComponent } from './Posts/cv-view/cv-view.component';
 
 
 const appRoutes: Routes = [
@@ -61,10 +64,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent],
+  declarations: [AppComponent, ViewCategoriesComponent,AddCategoryComponent, ViewQuizzesComponent,ViewQuizzesComponent, UpdateCategoryComponent, DeleteCategoryComponent, AddQuizzesComponent, UpdateQuizzesComponent, ViewQuestionsComponent, ViewQuizQuestionsComponent, AddQuestionComponent, LoadQuizComponent,CreatePostsComponent, ViewPostsComponent,DetailsPostsComponent, CreateCommentComponent,CreateCommentComponent, ViewCommentComponent,CvViewComponent],
   imports: [
     NgSelectModule,
-
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -93,6 +95,6 @@ const appRoutes: Routes = [
   ],
 
   bootstrap: [AppComponent],
-  providers: [CategoryService,QuizService],
+  providers: [CategoryService,QuizService,CvService],
 })
 export class AppModule {}
