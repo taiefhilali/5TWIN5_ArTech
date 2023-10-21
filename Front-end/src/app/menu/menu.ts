@@ -80,7 +80,31 @@ export const menu: CoreMenu[] = [
       },
       // Add more dropdown items as needed
     ]
-  }
+  },
+  {
+    id: 'posts',
+    title: 'Posts',
+    translate: 'Posts',
+    type: 'collapsible', // Use 'collapse' for a dropdown
+    icon: 'folder', // Icon for the main menu item
+    children: [
+      {
+        id: 'view-posts',
+        title: 'View Posts',
+        type: 'item',
+        icon: 'circle',
+        url: '/view-posts', // URL for the first dropdown item
+      },
+      {
+        id: 'add-Post',
+        title: 'Add Post',
+        type: 'item',
+        icon: 'circle',
+        url: '/create-posts', // URL for the second dropdown item
+      },
+      // Add more dropdown items as needed
+    ]
+  },
 
   
 
