@@ -2,6 +2,7 @@ package com.project.Commande.Service;
 
 import com.project.Commande.entities.Commande;
 import org.springframework.data.domain.Page;
+import com.project.Commande.DTO.CommandeDTO;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -17,4 +18,6 @@ public interface ICommandeService {
 
 
     List<Commande> getCommandes();
+
+    CommandeDTO getCommande(Long id);
 }
