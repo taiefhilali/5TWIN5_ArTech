@@ -8,7 +8,7 @@ import { Cours } from '../models/cours';
 })
 export class CoursService {
 
-  private baseUrl = 'http://localhost:8082/formations-s/courses'; // Assurez-vous d'ajuster l'URL si nécessaire
+  private baseUrl = 'http://localhost:8070/formations-s/courses'; // Assurez-vous d'ajuster l'URL si nécessaire
 
   constructor(private http: HttpClient) { }
 

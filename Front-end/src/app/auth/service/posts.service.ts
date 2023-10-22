@@ -15,7 +15,7 @@ import { AuthenticationService } from './authentication.service';
 export class PostsService {
 
   private currentUser;
-  private apiUrl = 'http://localhost:8001/forum-s/api/posts'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8070/forum-s/api/posts'; // Replace with your API endpoint
 
   constructor(private http: HttpClient,private _user:UserService,private authService:AuthenticationService) {
 

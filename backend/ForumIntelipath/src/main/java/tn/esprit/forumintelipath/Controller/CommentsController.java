@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin("http://localhost:4200")
+//@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/comment")
 //@PreAuthorize("hasRole('User')")
 public class CommentsController implements Serializable {

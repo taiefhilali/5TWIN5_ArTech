@@ -7,7 +7,7 @@ import { Comments } from '../models/Comments';
   providedIn: 'root'
 })
 export class CommentService {
-  private Url = 'http://localhost:8001/forum-s/api/comment'; // Replace with your API endpoint
+  private Url = 'http://localhost:8070/forum-s/api/comment'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) { }
 

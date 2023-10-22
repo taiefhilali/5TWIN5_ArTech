@@ -1,5 +1,8 @@
 package tn.esprit.auth.controllers;
 
+import org.keycloak.KeycloakPrincipal;
+import org.keycloak.KeycloakSecurityContext;
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,12 +16,13 @@ import tn.esprit.auth.entities.LoginResponse;
 import tn.esprit.auth.services.LoginService;
 import tn.esprit.auth.services.UserService;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE}, allowedHeaders = "*")
+//@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE}, allowedHeaders = "*")
 
 public class UserController {
     @Autowired
@@ -55,12 +59,20 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @PreAuthorize("#oauth2.hasScope('role:TEACHER') || #oauth2.hasScope('role:USER') || #oauth2.hasScope('role:ADMIN')")
-
     @GetMapping("/all")
-    public ResponseEntity<List<AppUser>> getAllUsers() {
-        List<AppUser> users = userService.getAllUsers();
-        return ResponseEntity.ok(users);
+    public ResponseEntity<List<AppUser>> getAllUsers(KeycloakAuthenticationToken auth) {
+        KeycloakPrincipal<KeycloakSecurityContext> principal = (KeycloakPrincipal<KeycloakSecurityContext>) auth.getPrincipal();
+        KeycloakSecurityContext context = principal.getKeycloakSecurityContext();
+        Object roleAttribute = context.getToken().getOtherClaims().get("role");
+
+        if (roleAttribute instanceof String && "TEACHER".equals((String) roleAttribute)) {
+            List<AppUser> users = userService.getAllUsers();
+
+            return ResponseEntity.ok(users);
+        } else {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(Collections.emptyList());
+        }
+
     }
 
     @PutMapping("/enableUser")

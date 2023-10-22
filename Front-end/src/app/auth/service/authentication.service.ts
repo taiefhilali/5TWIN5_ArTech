@@ -83,6 +83,7 @@ export class AuthenticationService {
               description: response.user?.description || '',
               address: response.user?.address|| '',
               phone: response.users?.phone || '',
+              token:response.access_token,
             };
   
             localStorage.setItem('access_token', response.access_token);

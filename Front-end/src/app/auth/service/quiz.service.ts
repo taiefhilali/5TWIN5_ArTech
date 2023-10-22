@@ -11,7 +11,7 @@ import { AuthenticationService } from './authentication.service';
 })
 export class QuizService {
   currentUser;
-  private apiUrl = 'http://localhost:8099/quiz-s/api/quizzes'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8070/quiz-s/api/quizzes'; // Replace with your API endpoint
 
   constructor(private http: HttpClient,private _user:UserService,private authService:AuthenticationService) {
 
@@ -22,10 +22,10 @@ export class QuizService {
 
   getQuizzes(): Observable<Quiz[]> {
     // Make an HTTP GET request to fetch quiz data from your API
-    return this.http.get<Quiz[]>(this.apiUrl + '/allquiz');
+    return this.http.get<Quiz[]>(this.apiUrl + `/user/${this.currentUser.id}`);
   }
   addQuiz(quiz) {
-    return this.http.post(`${this.apiUrl}/addquiz`, quiz);
+    return this.http.post(`${this.apiUrl}/add/${this.currentUser.username}`, quiz);
   }
 
   deleteQuiz(qId) {

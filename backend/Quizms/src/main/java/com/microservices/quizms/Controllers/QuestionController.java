@@ -17,7 +17,6 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/api/questions")
-@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE}, allowedHeaders = "*")
 public class QuestionController {
     @Autowired
     private QuestionService questionService;

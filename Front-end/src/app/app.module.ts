@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import 'hammerjs';
@@ -50,6 +50,7 @@ import { FormationAddComponent } from './Formation/formation-add/formation-add.c
 import { FormationListComponent } from './Formation/formation-list/formation-list.component';
 import { ListFormationComponent } from './commande/list-formation/list-formation.component';
 import { ListAdminCommandeComponent } from './commande/list-admin-commande/list-admin-commande.component';
+import { JwtInterceptor } from './auth/helpers/jwt.interceptor';
 
 
 
@@ -111,6 +112,10 @@ const appRoutes: Routes = [
   ],
 
   bootstrap: [AppComponent],
-  providers: [CategoryService,QuizService,CvService,],
+  providers: [CategoryService,QuizService,CvService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JwtInterceptor,
+    multi: true, 
+  }],
 })
 export class AppModule {}
