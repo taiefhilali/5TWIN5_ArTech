@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   hmr: false,
-  apiUrl: 'http://localhost:9000/auth-s'
+  apiUrl: 'http://localhost:8070/auth-s'
 };
 
 /*

@@ -17,7 +17,7 @@ public class KeycloakConfig {
         return new KeycloakSpringBootConfigResolver();
     }
 
-    @Bean
+ /*   @Bean
     public CorsFilter corsFilter() {
         CorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
@@ -27,5 +27,5 @@ public class KeycloakConfig {
         config.addAllowedHeader("*"); // You can specify specific HTTP headers
         ((UrlBasedCorsConfigurationSource) source).registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
-    }
+    }*/
 }

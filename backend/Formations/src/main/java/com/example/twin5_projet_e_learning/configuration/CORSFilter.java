@@ -1,3 +1,4 @@
+/*
 package com.example.twin5_projet_e_learning.configuration;
 
 import org.springframework.stereotype.Component;
@@ -27,3 +28,4 @@ public class CORSFilter implements Filter {
     public void destroy() {
     }
 }
+*/
