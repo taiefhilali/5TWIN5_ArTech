@@ -105,7 +105,85 @@ export const menu: CoreMenu[] = [
       // Add more dropdown items as needed
     ]
   },
-
+  {
+    id: 'formations',
+    title: 'Formations',
+    translate: 'Formations',
+    type: 'collapsible', // Use 'collapse' for a dropdown
+    icon: 'file', // Icon for the main menu item
+    children: [
+      {
+        id: 'view-formations',
+        title: 'View Formations',
+        type: 'item',
+        icon: 'circle',
+        url: '/formation', // URL for the first dropdown item
+      },
+      {
+        id: 'add-Formation',
+        title: 'Add Formation',
+        type: 'item',
+        icon: 'circle',
+        url: '/formation/add', // URL for the second dropdown item
+      },
+      // Add more dropdown items as needed
+    ]
+  },
+  {
+    id: 'courses',
+    title: 'Courses',
+    translate: 'Courses',
+    type: 'collapsible', // Use 'collapse' for a dropdown
+    icon: 'file', // Icon for the main menu item
+    children: [
+      {
+        id: 'view-Courses',
+        title: 'View Courses',
+        type: 'item',
+        icon: 'circle',
+        url: '/cours', // URL for the first dropdown item
+      },
+      {
+        id: 'add-Cours',
+        title: 'Add Cours',
+        type: 'item',
+        icon: 'circle',
+        url: '/cours/add', // URL for the second dropdown item
+      },
+      // Add more dropdown items as needed
+      {
+        id: 'edit-Cours',
+        title: 'Edit Cours',
+        type: 'item',
+        icon: 'circle',
+        url: 'cours/edit', // URL for the second dropdown item
+      },
+    ]
+  },
+  {
+    id: 'order',
+    title: 'Order',
+    translate: 'Order',
+    type: 'collapsible', // Use 'collapse' for a dropdown
+    icon: 'folder', // Icon for the main menu item
+    children: [
+      {
+        id: 'add-Orders',
+        title: 'View Orders',
+        type: 'item',
+        icon: 'circle',
+        url: '/formationsC', // URL for the first dropdown item
+      },
+      {
+        id: 'view-Orders',
+        title: 'Add Post',
+        type: 'item',
+        icon: 'circle',
+        url: '/Admin-commande', // URL for the second dropdown item
+      },
+      // Add more dropdown items as needed
+    ]
+  },
   
 
 ]

@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class QuestionService {
-  private apiUrl = 'http://localhost:8099/api/questions'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8099/quiz-s/api/questions'; // Replace with your API endpoint
 
   constructor(
     private http:HttpClient

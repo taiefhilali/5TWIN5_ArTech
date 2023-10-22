@@ -27,15 +27,15 @@ import { ListAdminCommandeComponent } from './commande/list-admin-commande/list-
 const routes: Routes = [
   // Other routes
   { path: 'categories', component: ViewCategoriesComponent
-  ,canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
+  ,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
   { path: 'add-category', component: AddCategoryComponent
   ,canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
   { path: 'quizzes', component: ViewQuizzesComponent ,
-  canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
+  canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
   { path: 'add-quiz', component: AddQuizzesComponent,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
   { path: 'view-questions/:qid/:title', component: ViewQuizQuestionsComponent,
-  canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
+  canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
   { path: 'updatequiz/:qid', component: UpdateQuizzesComponent,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','TEACHER'] }, },
   { path: 'updatecat/:cid', component: UpdateCategoryComponent ,
@@ -45,31 +45,24 @@ const routes: Routes = [
   { path: 'load-quiz/:cid', component: LoadQuizComponent,
   canActivate: [AuthGuard], data: { roles: ['ADMIN','USER'] }, },
   
-  { path: 'create-posts', component: CreatePostsComponent },
+  { path: 'create-posts', component: CreatePostsComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
 
-  { path: 'view-posts', component: ViewPostsComponent },
-  { path: 'details-posts/:postId', component: DetailsPostsComponent },
+  { path: 'view-posts', component: ViewPostsComponent ,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'details-posts/:postId', component: DetailsPostsComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
 
   
   { path: 'cv', component: CvViewComponent },
-  { path: 'categories', component: ViewCategoriesComponent },
-  { path: 'add-category', component: AddCategoryComponent },
-  { path: 'quizzes', component: ViewQuizzesComponent },
-  { path: 'updatecat/:id', component:UpdateCategoryComponent },
-  { path: 'cours', component:  CoursListComponent},
-  { path: 'cours/add', component:  CoursAddComponent},
-  { path: 'cours/edit', component:  CoursEditComponent},
-  { path: 'formation', component:  FormationListComponent},
-  { path: 'formation/add', component:  FormationAddComponent},
-
-  { path: 'formationsC', component: ListFormationComponent },
-  { path: 'Admin-commande', component: ListAdminCommandeComponent },
-
-
-
-
-
-
+  // { path: 'categories', component: ViewCategoriesComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
+  // { path: 'add-category', component: AddCategoryComponent },
+  // { path: 'quizzes', component: ViewQuizzesComponent },
+  // { path: 'updatecat/:id', component:UpdateCategoryComponent },
+  { path: 'cours', component:  CoursListComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'cours/add', component:  CoursAddComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'cours/edit', component:  CoursEditComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'formation', component:  FormationListComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'formation/add', component:  FormationAddComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'formationsC', component: ListFormationComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] },},
+  { path: 'Admin-commande', component: ListAdminCommandeComponent,canActivate: [AuthGuard], data: { roles: ['USER','ADMIN','TEACHER'] }, },
 
 ];
 

@@ -1,5 +1,6 @@
 package com.project.Commande.Controller;
 
+import com.project.Commande.DTO.CommandeDTO;
 import com.project.Commande.Service.ICommandeService;
 import com.project.Commande.entities.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 @RequestMapping("/commande")
@@ -44,6 +44,12 @@ public class CommandeController {
     public List<Commande> getCommandes() {
         return commandeService.getCommandes();
     }
+
+    @GetMapping("/product/{Id}")
+    public CommandeDTO getCommandesByProductId(@PathVariable("Id") Long id) {
+        return commandeService.getCommande(id);
+    }
+
 
 
 }

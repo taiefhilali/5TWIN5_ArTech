@@ -43,6 +43,4 @@ export class ViewCommentComponent implements OnInit {
       }
     );
   }
-
-  
 }

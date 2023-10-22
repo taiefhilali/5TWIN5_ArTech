@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import tn.esprit.forumintelipath.Entity.Comments;
 import tn.esprit.forumintelipath.Entity.Post;
-import tn.esprit.forumintelipath.Entity.User;
 
 import java.util.List;
 

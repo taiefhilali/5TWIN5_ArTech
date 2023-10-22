@@ -8,7 +8,7 @@ import { UpdatedCategory } from '../models/updatedCategory';
   providedIn: 'root',
 })
 export class CategoryService {
-  private apiUrl = 'http://localhost:8099/api/categories'; // Replace with your API endpoint
+  private apiUrl = 'http://localhost:8099/quiz-s/api/categories'; // Replace with your API endpoint
 
   constructor(private http: HttpClient) {}
 

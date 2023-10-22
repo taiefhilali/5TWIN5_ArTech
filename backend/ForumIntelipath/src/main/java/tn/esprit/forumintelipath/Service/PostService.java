@@ -4,18 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import tn.esprit.forumintelipath.Dao.PostRepository;
-import tn.esprit.forumintelipath.Dao.UserDao;
+import tn.esprit.forumintelipath.Dao.UserClient;
+import tn.esprit.forumintelipath.Entity.AppUser;
 import tn.esprit.forumintelipath.Entity.Post;
 import tn.esprit.forumintelipath.Service.Exceptions.PostNotFoundException;
 
 import javax.transaction.Transactional;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -25,9 +23,8 @@ import java.util.Set;
 public class PostService {
     @Autowired
     private final PostRepository postRepository;
-
     @Autowired
-    private final UserDao userDao;
+    private UserClient userClient;
 
 
     public Optional<Post> selectPost(Long postId) {
@@ -44,9 +41,13 @@ public class PostService {
         // Convert the Iterable (likely ArrayList) to a List
         return new ArrayList<>(this.postRepository.findAll());
     }
-    public  Iterable<Post> showPostsByCategory(String category){
+
+    public Iterable<Post> showPostsByCategory(String category) {
         return postRepository.findPostByCategory(category);
 
+    }
+    public Iterable<Post> getPostsByUserIdOrderByDesc(Long userid) {
+        return postRepository.findPostsByUserIdOrderByDesc(userid);
     }
     public Iterable<Post> showAllPostsDesc() {
         return postRepository.findByIdDesc();
@@ -62,20 +63,21 @@ public class PostService {
 
     }*/
 
-    public Post createPost(Post post) {
-        return this.postRepository.save(post);
-    }}
+//    public Post createPost(Post post) {
+//        return this.postRepository.save(post);
+//    }}
 
-   /* public Post createPost(Post post){
+    public Post createPost(Post post, String username) {
         try {
-           // User user = userDao.findById(username).get();
+            AppUser user = userClient.getUserByUsername(username);
             //post.setPostId(post.getPostId());
             post.setPostTitle(post.getPostTitle());
             post.setPostDescription(post.getPostDescription());
             post.setCategory(post.getCategory());
 
             //post.setUser(post.getUser());
-           // post.setUser(user);
+            post.setUserid(user.getId());
+            post.setUser(user);
             post.setVoteCount(0);
             return postRepository.save(post);
         } catch (Exception e) {
@@ -83,8 +85,9 @@ public class PostService {
             e.printStackTrace(); // Change this to use your logger
             throw new RuntimeException("Error creating post", e);
         }
+    }
 
-*/
+
 
 /*
     public Post giveALike(Long id){
@@ -109,12 +112,10 @@ public class PostService {
     }*/
 
 
-
-
     // public void updatePost(Long postId, String username){
 
-        //Post post = postRepository.findPostByPostId(postId);
-       // User user = userDao.findUserByUserName(username);
+    //Post post = postRepository.findPostByPostId(postId);
+    // User user = userDao.findUserByUserName(username);
 
       /* if(post.getUser() == user) {
             post.setPostTitle(post.getPostTitle());
@@ -139,3 +140,4 @@ public class PostService {
         }
     }
 }*/
+}

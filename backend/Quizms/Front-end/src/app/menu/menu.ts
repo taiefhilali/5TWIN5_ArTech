@@ -57,8 +57,7 @@ export const menu: CoreMenu[] = [
       },
       // Add more dropdown items as needed
     ]
-  },
- 
+  }
 
   
 

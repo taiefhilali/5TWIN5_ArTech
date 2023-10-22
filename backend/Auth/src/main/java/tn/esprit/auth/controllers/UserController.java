@@ -1,10 +1,12 @@
 package tn.esprit.auth.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import tn.esprit.auth.Response.UserResponse;
 import tn.esprit.auth.entities.AppUser;
 import tn.esprit.auth.entities.LoginRequest;
 import tn.esprit.auth.entities.LoginResponse;
@@ -16,11 +18,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE}, allowedHeaders = "*")
+
 public class UserController {
     @Autowired
     UserService userService;
     @Autowired
     LoginService loginService;
+
 
 
     @PostMapping("/register")
@@ -73,6 +78,12 @@ public class UserController {
         } else {
             return ResponseEntity.notFound().build(); // Return a 404 Not Found response
         }
+    }
+
+    @GetMapping("/users/{username}")
+    private ResponseEntity<UserResponse> getUserDetails(@PathVariable("username") String username) {
+        UserResponse  userResponse= userService.GetUserByusername(username);
+        return ResponseEntity.status(HttpStatus.OK).body(userResponse);
     }
 
 }

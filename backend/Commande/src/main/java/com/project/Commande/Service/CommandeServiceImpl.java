@@ -1,11 +1,14 @@
 package com.project.Commande.Service;
 
+import com.project.Commande.DTO.CommandeDTO;
 import com.project.Commande.Enum.EtatCommande;
+import com.project.Commande.MicroserviceCalls.FormationClient;
 import com.project.Commande.Repository.CommandeRepository;
 import com.project.Commande.entities.Commande;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +18,8 @@ public class CommandeServiceImpl implements ICommandeService {
 
     @Autowired
     CommandeRepository commandeRepository;
+    @Autowired
+    FormationClient formationClient;
     @Override
     public Commande AddCommande(Commande c) {
         return commandeRepository.save(c);
@@ -60,6 +65,19 @@ public class CommandeServiceImpl implements ICommandeService {
     @Override
     public List<Commande> getCommandes() {
         return commandeRepository.findAll();
+    }
+
+    @Override
+    public CommandeDTO getCommande(Long id) {
+        Optional <Commande> c=commandeRepository.findById(id);
+        if(c.isPresent()){
+            Commande commande=c.get();
+            return new CommandeDTO(commande,this.formationClient.getFormation(commande.getIdProduit()));
+
+        }
+        else
+            return null;
+
     }
 
 }

@@ -3,21 +3,14 @@ package tn.esprit.forumintelipath.Controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import tn.esprit.forumintelipath.Dao.UserDao;
-import tn.esprit.forumintelipath.Entity.Categories;
 import tn.esprit.forumintelipath.Entity.Post;
-import tn.esprit.forumintelipath.Entity.User;
+
 import tn.esprit.forumintelipath.Service.PostService;
 import tn.esprit.forumintelipath.Service.UserService;
 
-import java.io.IOException;
-import java.security.Principal;
-import java.util.List;
-import java.util.Map;
+import javax.ws.rs.PathParam;
 import java.util.Optional;
 
 
@@ -32,54 +25,32 @@ public class PostController {
     private final PostService postService;
     @Autowired
     private final UserService userService;
-    @Autowired
-    private final UserDao userDao;
 
 
-    /*@PostMapping("/add")
-    public ResponseEntity<String> addPost(@RequestBody Map<String, Object> requestMap) {
-        try {
-            // Extract username and post details from the request payload
-            //String username = (String) requestMap.get("username");
-            Map<String, Object> postMap = (Map<String, Object>) requestMap.get("post");
 
-            // Create a Post object from the post details
-            Post post = new Post();
-            post.setPostTitle((String) postMap.get("postTitle"));
-            post.setPostDescription((String) postMap.get("postDescription"));
-            Categories categoryFromRequest = Categories.valueOf((String) postMap.get("category"));
-            post.setCategory(categoryFromRequest);
-            // Fetch the user by username
-           // User user = userService.getUserByUsername(username);
+    @PostMapping("/add/{username}")
+    public ResponseEntity<Post> addQuestion(@RequestBody Post post ,@PathVariable String username) {
 
-            // Check if the user exists
-            //if (user == null) {
-               // return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");}
+        Post post1 = this.postService.createPost(post,username);
+        return ResponseEntity.ok(post1);
+    }
 
+    @GetMapping("/user/{userid}")
+    public Iterable<Post> getPostsByUserIdOrderByDesc(@PathVariable Long userid) {
+        return postService.getPostsByUserIdOrderByDesc(userid);
+    }
 
-            // Associate the post with the user
-           // post.setUser(user);
-
-            // Call the service to create the post
-            postService.createPost(post);
-
-            return ResponseEntity.ok("Post created successfully");
-        } catch (Exception e) {
-            // Handle exceptions, log them, and return an appropriate response
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error creating post");
-        }
-    }*/
-
-
+/*
     @PostMapping("/")
-    public ResponseEntity<Post> addQuestion(@RequestBody Post post) {
+    public ResponseEntity<Post> addQuestion(@RequestBody Post post ) {
 
         Post post1 = this.postService.createPost(post);
         return ResponseEntity.ok(post1);
     }
+*/
 
 
-    @GetMapping("/allpost")
+    @GetMapping("/allpost/{username}")
     public Iterable<Post> showAllPostsDesc() {
         return postService.getPost();
     }

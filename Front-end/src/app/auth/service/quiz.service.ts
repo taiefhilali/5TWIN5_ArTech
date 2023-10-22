@@ -3,15 +3,22 @@ import { Observable } from 'rxjs';
 import { Quiz } from '../models/quiz';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
+import { UserService } from './user.service';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
+  currentUser;
+  private apiUrl = 'http://localhost:8099/quiz-s/api/quizzes'; // Replace with your API endpoint
 
-  private apiUrl = 'http://localhost:8099/api/quizzes'; // Replace with your API endpoint
+  constructor(private http: HttpClient,private _user:UserService,private authService:AuthenticationService) {
 
-  constructor(private http: HttpClient) {}
+    this.authService.currentUser.subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
 
   getQuizzes(): Observable<Quiz[]> {
     // Make an HTTP GET request to fetch quiz data from your API

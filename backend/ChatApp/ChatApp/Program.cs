@@ -1,5 +1,7 @@
 using ChatApp.Configuration;
 using ChatApp.Hub;
+using Steeltoe.Discovery.Client;
+using Steeltoe.Discovery.Eureka;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json", optional: false);
@@ -7,11 +9,12 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSignalR();
+builder.Services.AddServiceDiscovery(o => o.UseEureka());
+
 builder.Services.AddSingleton<IDictionary<string, UserRoomConnection>>(opt =>
     new Dictionary<string, UserRoomConnection>());
 
 builder.Services.AddSingleton<ChatContext>();
-
 
 builder.Services.AddCors(options =>
 {

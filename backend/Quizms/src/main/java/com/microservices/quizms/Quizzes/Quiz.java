@@ -18,6 +18,9 @@ public class Quiz {
     private String description;
     private String maxMarks;
     private String numberofQuestions;
+    private Long userid;
+    @Transient
+    private AppUser user;
 
     private boolean active=false;
 /*@JsonIgnore
@@ -31,7 +34,7 @@ private Category category;*/
 @JsonBackReference
 private Category category;
 
-    @OneToMany(mappedBy = "quiz")   
+    @OneToMany(mappedBy = "quiz")
 @JsonIgnore
 private Set<Question> questions=new HashSet<>();
 
@@ -111,5 +114,21 @@ private Set<Question> questions=new HashSet<>();
 
     public void setQuestions(Set<Question> questions) {
         this.questions = questions;
+    }
+
+    public Long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Long userid) {
+        this.userid = userid;
+    }
+
+    public AppUser getUser() {
+        return user;
+    }
+
+    public void setUser(AppUser user) {
+        this.user = user;
     }
 }

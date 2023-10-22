@@ -21,9 +21,14 @@ public class QuizController {
     private EntityManager entityManager;
     @Autowired
     private QuizService quizService;
+    @PostMapping("/add/{username}")
+    public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz ,@PathVariable String username) {
 
+        Quiz quiz1 = this.quizService.addQuizz(quiz,username);
+        return ResponseEntity.ok(quiz1);
+    }
     //add quiz
-    @Transactional
+   /* @Transactional
     @PostMapping("/addquiz")
 
     public ResponseEntity<Quiz> addQuiz(@RequestBody Quiz quiz) {
@@ -33,7 +38,7 @@ public class QuizController {
 
         Quiz quiz1 = this.quizService.addQuiz(quiz);
         return ResponseEntity.ok(quiz1);
-    }
+    }*/
 
     //get quiz
     @GetMapping("/{quizId}")
@@ -63,4 +68,11 @@ public class QuizController {
 
         this.quizService.deleteQuiz(quizId);
     }
+
+
+    @GetMapping("/user/{userid}")
+    public Iterable<Quiz> getQuizzesByUserIdOrderByDesc(@PathVariable Long userid) {
+        return quizService.getQuizzesByUserIdOrderByDesc(userid);
+    }
+
 }

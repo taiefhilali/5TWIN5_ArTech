@@ -2,19 +2,12 @@ package tn.esprit.forumintelipath.Controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.forumintelipath.Dao.UserDao;
 import tn.esprit.forumintelipath.Entity.Comments;
-import tn.esprit.forumintelipath.Entity.Post;
-import tn.esprit.forumintelipath.Entity.User;
 import tn.esprit.forumintelipath.Service.CommentsService;
 
 import java.io.Serializable;
-import java.security.Principal;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -25,8 +18,6 @@ public class CommentsController implements Serializable {
 
     @Autowired
     private final CommentsService commentsService;
-    @Autowired
-    private final UserDao userDao;
 
     @PostMapping("/add/{postId}")
     public Comments addComment(@PathVariable Long postId, @RequestBody Comments comments){

@@ -4,10 +4,13 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const Cv = require('./cv');
+const eurekaConfig = require('./eureka-config');
+
 
 require('dotenv').config();
 const cors = require('cors');
 const morgan = require('morgan');
+const eurekaClient = eurekaConfig.client;
 
 const cvroute = require('./cvroute');
 
@@ -16,6 +19,7 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // MIDDLEWARE
+
 app.use(bodyParser.json());
 app.use(cors());
 app.use(morgan('dev'));

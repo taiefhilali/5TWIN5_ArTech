@@ -2,9 +2,9 @@ package tn.esprit.forumintelipath.Dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import tn.esprit.forumintelipath.Entity.Post;
-import tn.esprit.forumintelipath.Entity.User;
 
 import java.util.List;
 
@@ -39,5 +39,6 @@ public interface PostRepository extends JpaRepository<Post,Long> {
 
     Iterable<Post> findPostByCategory(String category);
 
-
+    @Query("SELECT p FROM Post p WHERE p.userid = :userid ORDER BY p.dateCreated DESC")
+    Iterable<Post> findPostsByUserIdOrderByDesc(@Param("userid") Long userid);
 }

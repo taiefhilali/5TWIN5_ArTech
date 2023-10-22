@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.forumintelipath.Dao.CommentsRepository;
 import tn.esprit.forumintelipath.Dao.PostRepository;
-import tn.esprit.forumintelipath.Dao.UserDao;
 import tn.esprit.forumintelipath.Entity.Comments;
 import tn.esprit.forumintelipath.Entity.Post;
-import tn.esprit.forumintelipath.Entity.User;
 import tn.esprit.forumintelipath.Service.Exceptions.PostDoesNotExistsException;
 
 import javax.transaction.Transactional;
@@ -27,8 +25,6 @@ public class CommentsService {
     @Autowired
     private final PostRepository postRepository;
 
-    @Autowired
-    private final UserDao userDao;
 
 
 

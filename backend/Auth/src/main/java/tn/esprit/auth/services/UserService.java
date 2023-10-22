@@ -6,9 +6,12 @@ import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import tn.esprit.auth.Response.PostsResponse;
+import tn.esprit.auth.Response.UserResponse;
 import tn.esprit.auth.config.KeycloakConfiguration;
 import tn.esprit.auth.entities.AppUser;
 import tn.esprit.auth.entities.Credentials;
+import tn.esprit.auth.feignClient.PostsClient;
 import tn.esprit.auth.repositories.UserRepository;
 
 import java.util.*;
@@ -21,6 +24,8 @@ public class UserService {
     private KeycloakConfiguration keycloakConfiguration;
     @Autowired
     EmailSenderService senderService;
+    @Autowired
+    private PostsClient postsClient;
 
     public ResponseEntity<AppUser> addUser(AppUser user) {
         CredentialRepresentation credential = Credentials.createPasswordCredentials(user.getPassword());
@@ -49,6 +54,7 @@ public class UserService {
 
     public Optional<AppUser> getUserByUsername(String username) {
         return userRepository.findByUsername(username);
+
     }
 
     public boolean doesUserExist(String username) {
@@ -119,6 +125,18 @@ public class UserService {
         }
     }
 
+    public UserResponse GetUserByusername(String username) {
 
+        Optional<AppUser> user = userRepository.findByUsername(username);
+        UserResponse userResponse = new UserResponse();
+        userResponse.setId(user.get().getId());
+        userResponse.setUsername(user.get().getUsername());
+
+        // Using FeignClient
+        ResponseEntity<PostsResponse> postsResponse = postsClient.getPostsbyusername(username);
+        userResponse.setPostsResponse(postsResponse.getBody());
+
+        return userResponse ;
+    }
 
 }
