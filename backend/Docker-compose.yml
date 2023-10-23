@@ -1,71 +1,123 @@
 version: "3.9"
+
 services:
 
-
-  Quiz:
-    container_name: quiz
-    image: "quizms"
-    build: .\Quizms
-    ports:
-      - "8099:8099"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/quiz?createDatabaseIfNotExist=true&userSSL=false&max_allowed_packet=15728640
-        - SPRING_DATASOURCE_USERNAME=root
-        - SPRING_DATASOURCE_PASSWORD=0000
-        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
-    depends_on:
-      - "Eureka"
-      -  "db-mysql"
-
-  Auth:
-    container_name: auth
-    image: "authentication"
-    build: .\Auth
-    ports:
-      - "9000:9000"
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/quiz?createDatabaseIfNotExist=true&userSSL=false&max_allowed_packet=15728640
-        - SPRING_DATASOURCE_USERNAME=root
-        - SPRING_DATASOURCE_PASSWORD=0000
-        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
-    depends_on:
-      - "Eureka"
-      -  "db-mysql"
-
-
-  Forum:
-    container_name: forum
-    build: .\ForumIntelipath
-    ports:
-      - "8001:8001"
-    environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://serviceregistry:8761/eureka/
-
-
-    image: "forumms"
-    restart: unless-stopped
-    depends_on:
-      - Eureka
-      - db-mysql
-
-  Eureka:
-    container_name: eureka
-    build: .\eureka
-    hostname: serviceregistry
+  eureka:
+    build: ./EurekaServer
     ports:
       - "8761:8761"
-    image: "eureka"
-
+    image: eureka
+    hostname: serviceregistry
     environment:
-      - eureka.client.serviceUrl.defaultZone=http://serviceregistry:8761/eureka/
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    networks:
+      - mynetwork  # Define a network for inter-service communication
 
+  gateway:
+    image: gatewayapi
+    build: ./GatewayAPI
+    ports:
+      - "8071:8070"
+    environment:
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - mynetwork
+
+
+
+  quiz:
+    container_name: quiz
+    image: msquiz
+    build: ./Quizms
+    ports:
+      - "8091:8099"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/quiz?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=0000
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    depends_on:
+      - eureka
+      - db-mysql
+    networks:
+      - mynetwork
+
+  authenticiation:
+      container_name: authentication
+      image: authentication
+      build: ./Auth
+      ports:
+        - "9001:9000"
+      environment:
+        - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/quiz?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
+        - SPRING_DATASOURCE_USERNAME=root
+        - SPRING_DATASOURCE_PASSWORD=0000
+        - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+      depends_on:
+        - eureka
+        - db-mysql
+      networks:
+        - mynetwork
+
+  # Define other services similarly...
+  commande:
+    container_name: commande
+    image: order
+    build: ./Commande
+    ports:
+      - "9941:9940"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db-mysql:3306/quiz?createDatabaseIfNotExist=true&useSSL=false&max_allowed_packet=15728640
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=0000
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    depends_on:
+      - eureka
+      - db-mysql
+    networks:
+      - mynetwork
+
+
+  forum:
+    container_name: forum
+    image: msforum
+    build: ./ForumIntelipath
+    ports:
+      - "8002:8001"
+    environment:
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - mynetwork
+
+
+  formations:
+    container_name: formations
+    image: formations
+    build: ./TWIN5_Projet_E_learning/Formations
+    ports:
+      - "8085:8084"
+    environment:
+      - eureka.client.service-url.defaultZone=http://serviceregistry:8761/eureka/
+    depends_on:
+      - eureka
+    networks:
+      - mynetwork
 
 
   db-mysql:
-    image: "mysql:5.6"
+    image: mysql:5.6
     container_name: db-mysql
     environment:
       - MYSQL_ROOT_PASSWORD=0000
     ports:
       - "3307:3306"
     restart: unless-stopped
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:

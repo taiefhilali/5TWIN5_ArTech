@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cv } from 'app/auth/models/Cv';
 import { CvService } from 'app/auth/service/cv.service';
+
 @Component({
   selector: 'app-cv-view',
   templateUrl: './cv-view.component.html',
@@ -11,7 +12,7 @@ export class CvViewComponent implements OnInit {
   selectedFile: File | null = null;
   cvs: Cv[] = [];
 
-  constructor(private cvservice:CvService) {}
+  constructor(private cvservice: CvService) {}
 
   ngOnInit() {
     this.fetchCVs();
@@ -27,8 +28,13 @@ export class CvViewComponent implements OnInit {
         (response) => {
           console.log('CV uploaded successfully:', response);
           this.fetchCVs(); // Refresh the list of CVs after uploading
+
+          // Reload the current page
+          window.location.reload();
         },
         (error) => {
+          window.location.reload();
+
           console.error('Error uploading CV:', error);
         }
       );
@@ -45,6 +51,4 @@ export class CvViewComponent implements OnInit {
       }
     );
   }
-
- 
 }

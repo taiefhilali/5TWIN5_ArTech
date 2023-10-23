@@ -62,7 +62,6 @@ public class QuizController {
     }
 
     //delete Category
-    @CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST}, allowedHeaders = "*")
     @DeleteMapping("/delete/{quizId}")
     public void deleteQuiz(@PathVariable("quizId") Long quizId){
 

@@ -32,7 +32,7 @@ export class ListFormationComponent {
       date: new Date()
     };
 
-    this.http.post('http://localhost:9940/commande/add', commande).subscribe((response) => {
+    this.http.post('http://localhost:8070/commande/add', commande).subscribe((response) => {
         // Afficher une alerte de succès avec Swal
         Swal.fire({
           icon: 'success',

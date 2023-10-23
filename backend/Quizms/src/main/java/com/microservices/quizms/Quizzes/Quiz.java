@@ -34,7 +34,7 @@ private Category category;*/
 @JsonBackReference
 private Category category;
 
-    @OneToMany(mappedBy = "quiz")
+    @OneToMany(mappedBy = "quiz",cascade = CascadeType.ALL)
 @JsonIgnore
 private Set<Question> questions=new HashSet<>();
 

@@ -1,0 +1,6 @@
+
+O
+java:S3655„"3Call "user.isPresent()" before accessing the value.(…ãèüÿÿÿÿ
+~
+java:S1845€"hRename method "GetUserByusername" to prevent any misunderstanding/clash with method "getUserByUsername".(òˆ¡i
+c	java:S100€"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òˆ¡i

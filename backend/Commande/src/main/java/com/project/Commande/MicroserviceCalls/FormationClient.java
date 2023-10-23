@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(name = "formations")
 public interface FormationClient {
 
-    @GetMapping(value = "/formations/form/{id}")
+    @GetMapping(value = "formations/form/{id}")
     public Formation getFormation(@RequestParam("id") Long productId);
 }

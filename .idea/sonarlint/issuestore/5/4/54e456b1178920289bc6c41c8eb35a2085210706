@@ -1,0 +1,16 @@
+
+J
+java:S3740E"/Provide the parametrized type for this generic.(Ø¦ı—ıÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇÍÖ¦
+V
+java:S4684"@Replace this persistent entity with a simple POJO or DTO object.(Å¬
+<
+java:S1452)"&Remove usage of generic wildcard type.(ŸŒÔÜ
+[
+java:S46841"@Replace this persistent entity with a simple POJO or DTO object.(Ç—Öûÿÿÿÿ
+<
+java:S14528"&Remove usage of generic wildcard type.(ùÏÒ¾
+<
+java:S1452Q"&Remove usage of generic wildcard type.(…¿Ÿ÷
+\
+java:S1128"FRemove this unused import 'com.microservices.quizms.Quizzes.Category'.(¦ñÙâ

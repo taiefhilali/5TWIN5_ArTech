@@ -1,0 +1,12 @@
+
+[
+java:S4684$"@Replace this persistent entity with a simple POJO or DTO object.(Ô»Ì¤úÿÿÿÿ
+V
+java:S46841"@Replace this persistent entity with a simple POJO or DTO object.(³Ş¨Õ
+F
+java:S1905D")Remove this unnecessary cast to "String".(Ù“8íÕ¹µ1
+:
+java:S3751`"Make this method non "private".(äØËÒıÿÿÿÿ
+h
+java:S1128
+"FRemove this unused import 'org.springframework.stereotype.Controller'.(øŠ—Öùÿÿÿÿ8›Ö¹µ1

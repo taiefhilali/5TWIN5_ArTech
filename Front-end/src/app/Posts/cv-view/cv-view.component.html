@@ -1,17 +1,21 @@
-<div class="container">
-  <div class="card">
-    <input type="file" (change)="onFileChange($event)" />
-    <button (click)="uploadCv()">Upload CV</button>
-    <div class="cv-list" *ngFor="let cv of cvs">
-      <h3>{{ cv.cv }}</h3>
-      <p>{{ cv.content }}</p>
-      <ul>
-        <li *ngFor="let skill of cv.skills">{{ skill }}</li>
-      </ul>
-      <ul>
-        <li *ngFor="let experience of cv.experiences">{{ experience }}</li>
-      </ul>
-      <hr />
-    </div>
+<div class="card" style="width: 900px; margin-left:200px ;">
+  <input type="file" (change)="onFileChange($event)" style="width:450px;margin-left:150px "/>
+  <button style="width: 200px;margin-left:280px" (click)="uploadCv()">Upload your resume</button>
+
+
+  <div class="cv-list" *ngFor="let cv of cvs">
+    <ul>
+      <span style="font-weight: bold; color: rgba(111, 90, 246, 0.5529411765);"> SKILLS: </span>
+      <ng-container *ngFor="let skill of cv.skills; let first = first; let last = last">
+        <li>{{ first ? '' : ' - '}}{{ skill }}</li>
+      </ng-container>
+    </ul>
+    <ul>
+      <span style="font-weight:bold; color: rgba(111, 90, 246, 0.5529411765);"> EXPERIENCES: </span>
+      <ng-container *ngFor="let experience of cv.experiences; let first = first; let last = last">
+        <li>{{ first ? '' : ' - '}}{{ experience }}</li>
+      </ng-container>
+    </ul>
+    <hr />
   </div>
-</div>
+  

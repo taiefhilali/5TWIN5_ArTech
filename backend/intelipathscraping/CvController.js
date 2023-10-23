@@ -7,7 +7,7 @@ exports.uploadcv = async (req, res) => {
     const pdfBuffer = req.file.buffer;
     const pdfData = await pdfParse(pdfBuffer);
 
-    const skillsKeywords = ['COMPETENCES', 'SKILLS', 'skills', 'SKILLS'];
+    const skillsKeywords = ['COMPETENCES', 'SKILLS', 'skills', 'SKILLS', 'COMPETENCES'];
     const skillsSectionStart = skillsKeywords.find(keyword => pdfData.text.includes(keyword));
 
     if (skillsSectionStart) {
@@ -30,11 +30,17 @@ exports.uploadcv = async (req, res) => {
 
         const lines = skillsText.split(/\.\s*/).map(line => line.trim());
 
+        // Filter out undesired sentence from experiences
+        const filteredExperiences = extractedExperiences.filter(line => !line.includes("enfaiedh siwar fULL stack web developer student"));
+        const filteredSkills = lines.filter(line => line && !skillsKeywords.includes(line)).map(skill => skill.trim());
+        console.log(filteredSkills);
+        console.log(filteredExperiences);
+
         const newcv = new Cv({
           cv: req.file.path,
           content: pdfData.text,
-          experiences: extractedExperiences,
-          skills: lines.filter(line => line && !skillsKeywords.includes(line)).map(skill => skill.trim()),
+          experiences: filteredExperiences,
+          skills: filteredSkills,
         });
 
         await newcv.save();

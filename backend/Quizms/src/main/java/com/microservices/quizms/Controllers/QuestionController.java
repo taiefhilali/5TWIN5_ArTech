@@ -52,7 +52,6 @@ public class QuestionController {
     }
 
     //get all question qb quizz
-    @CrossOrigin(origins = "http://localhost:4200", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE}, allowedHeaders = "*")
     @GetMapping("/quiz/{quizId}")
     public ResponseEntity<?> getQuestionsofQuiz(@PathVariable("quizId") long quizId) {
         Quiz quiz = this.quizService.getQuiz(quizId);

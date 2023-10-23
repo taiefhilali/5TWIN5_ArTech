@@ -19,7 +19,7 @@ public class GatewayApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayApiApplication.class, args);
 	}
-	@Bean
+/*	@Bean
 	public RouteLocator gatewayRoutes(RouteLocatorBuilder builder) {
 		return builder.routes()
 				.route("Quizms", r->r.path("/quizzes/**",
@@ -36,7 +36,7 @@ public class GatewayApiApplication {
 						.uri("http://localhost:9940/"))
 
 				.build();
-	}
+	}*/
 
 
 

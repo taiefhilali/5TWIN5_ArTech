@@ -5,7 +5,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class CorsConfiguration {
-    @Bean
+   /* @Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurer() {
             @Override
@@ -16,5 +16,5 @@ public class CorsConfiguration {
                         .allowedHeaders("*"); // Autoriser tous les en-têtes
             }
         };
-    }
+    }*/
 }
